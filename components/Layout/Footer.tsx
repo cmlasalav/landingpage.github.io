@@ -4,7 +4,7 @@ import FooterImg from "../../public/images/Logo - Footer (2).jpg";
 
 export default function Footer() {
   return (
-    <footer className="flex items-center bg-[#3a415a] text-white p-4 mt-8 min-h-[200px]" >
+    <footer className="flex items-center bg-[#3a415a] text-white p-4 mt-8 min-h-[200px]">
       <Image
         src={FooterImg}
         alt="Genera Technology"

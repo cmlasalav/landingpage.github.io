@@ -21,7 +21,7 @@ export default function GeneraHome() {
   const { locale } = useContext(langContext);
   return (
     <section id="GeneraHome" className="mt-20 bg-white rounded-2xl">
-      <div className="w-full flex flex-col items-center justify-center bg-[#d1cacf] rounded-2xl relative min-h-200">
+      <div className="w-full flex flex-col items-center justify-center bg-[#aab3ab] rounded-2xl relative min-h-200">
         <div className="w-full h-60 bg-white pt-4 text-center absolute top-0 rounded-t-2xl z-10 "></div>
         <div className="max-w-[75rem] bg-white text-center mb-24 relative z-20 px-4">
           <div>

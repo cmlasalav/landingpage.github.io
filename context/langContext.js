@@ -1,29 +1,22 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { IntlProvider } from "react-intl";
 import SpanishMessages from "../lang/es-MX.json";
 import EnglishMessages from "../lang/en-US.json";
 
 const langContext = createContext();
+
 const LangProvider = ({ children }) => {
-  let defaultLocale = "en-US";
-  let defaultLanguage = EnglishMessages;
+  const [language, setLanguage] = useState(EnglishMessages);
+  const [locale, setLocale] = useState("en-US");
 
-  //Local Storage lang
-  const lang = localStorage.getItem("lang");
-  if (lang) {
-    defaultLocale = lang;
-    if (lang === "es-MX") {
-      defaultLanguage = SpanishMessages;
-    } else if (lang === "en-US") {
-      defaultLanguage = EnglishMessages;
-    } else {
-      defaultLocale = "en-US";
-      defaultLanguage = EnglishMessages;
+  useEffect(() => {
+    // Accede a localStorage solo en el cliente
+    const lang = typeof window !== "undefined" && localStorage.getItem("lang");
+    if (lang) {
+      setLocale(lang);
+      setLanguage(lang === "es-MX" ? SpanishMessages : EnglishMessages);
     }
-  }
-
-  const [language, setLanguage] = useState(defaultLanguage);
-  const [locale, setLocale] = useState(defaultLocale);
+  }, []);
 
   //Switch case lang
   const Pagelanguage = (languagePage) => {
@@ -31,12 +24,16 @@ const LangProvider = ({ children }) => {
       case "es-MX":
         setLanguage(SpanishMessages);
         setLocale("es-MX");
-        localStorage.setItem("lang", "es-MX");
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lang", "es-MX");
+        }
         break;
       case "en-US":
         setLanguage(EnglishMessages);
         setLocale("en-US");
-        localStorage.setItem("lang", "en-US");
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lang", "en-US");
+        }
         break;
       default:
         setLanguage(EnglishMessages);
