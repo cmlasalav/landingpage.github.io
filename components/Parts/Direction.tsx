@@ -12,7 +12,7 @@ export default function Direction() {
       </p>
       <p>
         <FormattedMessage id="direction.email" defaultMessage="Email: " />
-        info@generaconsultinggroup.com
+        info@example.com
       </p>
     </>
   );

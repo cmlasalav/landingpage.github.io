@@ -37,7 +37,7 @@ export default function GeneraHome() {
             <div key={index}>
               <Image
                 src={Logo}
-                alt="Genera Technology"
+                alt="Example Group"
                 className="max-w-[30rem] z-30 mx-auto"
                 priority
               />

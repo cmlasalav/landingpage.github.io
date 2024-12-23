@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Direction from "../Parts/Direction";
-import FooterImg from "../../public/images/Logo - Footer (2).jpg";
+import FooterImg from "../../public/images/Footer.jpg";
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
         priority
         width={192}
         height={192}
-        className="w-48 h-auto"
+        className="w-48 h-auto "
       />
       <div className="flex flex-col ml-48">
         <Direction />
