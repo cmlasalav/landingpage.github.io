@@ -17,11 +17,12 @@ export default function Header({
     scroller.scrollTo(section, {
       smooth: true,
       duration: 500,
+      offset: -60,
     });
   };
 
   return (
-    <header className="bg-white p-2 sticky top-0 z-[1000] h-16 w-full shadow-sm">
+    <header className="bg-white p-2 sticky top-0 z-[1000] h-20 w-full shadow-sm">
       <div className="max-w-7xl mx-auto">
         <nav className="max-w-7xl mx-auto flex justify-end items-center px-8">
           <ul className="flex gap-10">
@@ -44,20 +45,18 @@ export default function Header({
             ) : (
               <>
                 <li>
-                  <button className="bg-transparent border-none cursor-pointer text-inherit" onClick={() => handleScroll("GeneraHome")}>
+                  <button
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                    onClick={() => handleScroll("Home")}
+                  >
                     <FormattedMessage id="header.home" defaultMessage="Home" />
                   </button>
                 </li>
                 <li>
-                  <button className="bg-transparent border-none cursor-pointer text-inherit" onClick={() => handleScroll("GeneraServices")}>
-                    <FormattedMessage
-                      id="header.services"
-                      defaultMessage="Our Services"
-                    />
-                  </button>
-                </li>
-                <li>
-                  <button className="bg-transparent border-none cursor-pointer text-inherit" onClick={() => handleScroll("GeneraAboutUs")}>
+                  <button
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                    onClick={() => handleScroll("AboutUs")}
+                  >
                     <FormattedMessage
                       id="header.aboutUs"
                       defaultMessage="About Us"
@@ -65,7 +64,21 @@ export default function Header({
                   </button>
                 </li>
                 <li>
-                  <button className="bg-transparent border-none cursor-pointer text-inherit" onClick={() => handleScroll("GeneraTestimonials")}>
+                  <button
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                    onClick={() => handleScroll("Services")}
+                  >
+                    <FormattedMessage
+                      id="header.services"
+                      defaultMessage="Our Services"
+                    />
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                    onClick={() => handleScroll("GeneraTestimonials")}
+                  >
                     <FormattedMessage
                       id="header.testimonials"
                       defaultMessage="Testimonials"
@@ -73,7 +86,10 @@ export default function Header({
                   </button>
                 </li>
                 <li>
-                  <button className="bg-transparent border-none cursor-pointer text-inherit" onClick={() => handleScroll("GeneraBlog")}>
+                  <button
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                    onClick={() => handleScroll("GeneraBlog")}
+                  >
                     <FormattedMessage
                       id="header.blog"
                       defaultMessage="Blog/News"
@@ -81,7 +97,10 @@ export default function Header({
                   </button>
                 </li>
                 <li>
-                  <button className="bg-transparent border-none cursor-pointer text-inherit" onClick={() => handleScroll("GeneraContact")}>
+                  <button
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                    onClick={() => handleScroll("GeneraContact")}
+                  >
                     <FormattedMessage
                       id="header.contact"
                       defaultMessage="Contact"
@@ -91,7 +110,10 @@ export default function Header({
                 {userAuthenticated ? (
                   <>
                     <li>
-                      <button onClick={onSignOutClick} className="bg-transparent border-none cursor-pointer text-inherit">
+                      <button
+                        onClick={onSignOutClick}
+                        className="bg-transparent border-none cursor-pointer text-inherit"
+                      >
                         <FormattedMessage
                           id="header.signOut"
                           defaultMessage="Sign Out"
@@ -99,7 +121,10 @@ export default function Header({
                       </button>
                     </li>
                     <li>
-                      <button onClick={onProfileClick} className="bg-transparent border-none cursor-pointer text-inherit">
+                      <button
+                        onClick={onProfileClick}
+                        className="bg-transparent border-none cursor-pointer text-inherit"
+                      >
                         <FormattedMessage
                           id="header.profile"
                           defaultMessage="Profile"
@@ -109,7 +134,10 @@ export default function Header({
                   </>
                 ) : (
                   <li>
-                    <button onClick={onLoginClick} className="bg-transparent border-none cursor-pointer text-inherit">
+                    <button
+                      onClick={onLoginClick}
+                      className="bg-transparent border-none cursor-pointer text-inherit"
+                    >
                       <FormattedMessage
                         id="header.login"
                         defaultMessage="Login"
@@ -126,4 +154,3 @@ export default function Header({
     </header>
   );
 }
-
