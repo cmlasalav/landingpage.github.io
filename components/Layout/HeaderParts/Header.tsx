@@ -77,7 +77,7 @@ export default function Header({
                 <li>
                   <button
                     className="bg-transparent border-none cursor-pointer text-inherit"
-                    onClick={() => handleScroll("GeneraTestimonials")}
+                    onClick={() => handleScroll("Testimonials")}
                   >
                     <FormattedMessage
                       id="header.testimonials"

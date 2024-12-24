@@ -39,7 +39,7 @@ export default function AboutUs({ setModalMessage, setErrorModal }) {
 
   return (
     <section id="AboutUs" className="py-8">
-      <h2 className="flex-start mb-8 ml-10">
+      <h2 className="mb-8 ml-10">
         <span className="text-[#76829e] font-bold text-4xl">
           <FormattedMessage
             id="section.aboutUs.title1"
