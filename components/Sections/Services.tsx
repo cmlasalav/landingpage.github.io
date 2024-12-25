@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { langContext } from "../../context/langContext";
-import ServiceLogo from '../../public/images/Services.jpg';
+import ServiceLogo from "../../public/images/Services.jpg";
 //import AddNew from "../../Parts/AddNew";
 //import Loading from "../../Parts/Loading";
 //import NewServices from "./NewServices";
@@ -50,7 +50,7 @@ export default function Services({
   };
 
   return (
-    <section id="GeneraServices" className="py-16 px-4">
+    <section id="Services" className="py-8 px-4">
       <h1 className="text-4xl font-bold mb-12 ml-10">
         <span className="text-[#76829e]">
           <FormattedMessage id="section.services.title1" defaultMessage="Our" />{" "}

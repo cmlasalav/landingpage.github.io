@@ -38,7 +38,7 @@ export default function Testimonials({
   }, []);
 
   return (
-    <section id="Testimonials" className="py-12 px-4">
+    <section id="Testimonials" className="py-8 px-4">
       <h1 className="text-4xl font-bold mb-8 ml-10">
         <span className="text-[#76829e]">
           <FormattedMessage
