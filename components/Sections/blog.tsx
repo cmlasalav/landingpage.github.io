@@ -29,13 +29,13 @@ export default function Blog({ onReadMore, onNewPost, setModalMessage }) {
   }, []);
 
   return (
-    <section id="Blog" className="max-w-7xl py-8 px-4">
+    <section id="Blog" className="max-w-7xl py-8 px-4 ml-10">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4 ml-10">
+        <h1 className="text-4xl font-bold mb-4 ">
           <span className="text-[#76829e]">Blog</span>
           <span className="text-black">/News</span>
         </h1>
-        <p className="text-gray-600 max-w-2xl ml-10">
+        <p className="text-gray-600 max-w-2xl">
           <FormattedMessage
             id="blog.paragraph"
             defaultMessage="Explore our latest insights on industry trends, management strategies, and success stories to stay informed and inspired."

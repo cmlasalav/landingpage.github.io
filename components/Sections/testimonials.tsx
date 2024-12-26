@@ -38,8 +38,8 @@ export default function Testimonials({
   }, []);
 
   return (
-    <section id="Testimonials" className="py-8 px-4">
-      <h1 className="text-4xl font-bold mb-8 ml-10">
+    <section id="Testimonials" className="py-8 px-4 ml-10">
+      <h1 className="text-4xl font-bold mb-8">
         <span className="text-[#76829e]">
           <FormattedMessage
             id="section.testimonials.title1"
