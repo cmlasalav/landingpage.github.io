@@ -119,6 +119,9 @@
     "socialmedia.title": "Conecta con nosotros",
     "socialmedia.paragraph" : "Mantente conectado y síguenos en las redes sociales para actualizaciones y noticias de la industria.",
 
+    "auth.page.title" : "Inicia sesión en tu cuenta",
+    "auth.page.subtitle" : "o",
+    "auth.page.newAccount" : "Crea una nuenva cuenta",
     "login.title" : "Iniciar Sesión",
     "login.password" : "Contraseña:",
     "login.button" : "Iniciar Sesión",
@@ -129,8 +132,11 @@
     "login.google" : "Iniciar Sesión con Google",
 
     "signUp.title" : "Registrarse",
-    "signUp.name" : "Nombre:",
+    "signUp.name" : "Nombre completo:",
     "signUp.password" : "Contraseña:",
+    "signUp.confirm.password" : "Confirma la Contraseña:",
+    "signUp.passwordMatch" : "Contraseñas iguales",
+    "signUp.passwordNoMatch" : "Las contraseñas no coinciden",
     "signUp.button" : "Registrarse",
     "signUp.paragraph" : "¿Ya tienes cuenta?",
     "signUp.text.button" : "Iniciar Sesión",

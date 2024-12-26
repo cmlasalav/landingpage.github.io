@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { scroller } from "react-scroll";
 import { FormattedMessage } from "react-intl";
 import BackButton from "./BackButton";
@@ -134,7 +135,8 @@ export default function Header({
                   </>
                 ) : (
                   <li>
-                    <button
+                    <Link
+                      href="/auth"
                       onClick={onLoginClick}
                       className="bg-transparent border-none cursor-pointer text-inherit"
                     >
@@ -142,7 +144,7 @@ export default function Header({
                         id="header.login"
                         defaultMessage="Login"
                       />
-                    </button>
+                    </Link>
                   </li>
                 )}
                 <LangHeader />

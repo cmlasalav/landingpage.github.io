@@ -117,6 +117,9 @@
     "socialmedia.title": "Connect with Us",
     "socialmedia.paragraph" : "Stay connected and follow us on social media for updates and industry news.",
 
+    "auth.page.title" : "Sign in to your account",
+    "auth.page.subtitle" : "Or",
+    "auth.page.newAccount" : "Create a new account",
     "login.title" : "Login",
     "login.password" : "Password:",
     "login.paragraph" : "You don't have an account?",
@@ -127,8 +130,11 @@
     "login.google" : "Log In with Google",
 
     "signUp.title" : "Sign Up",
-    "signUp.name" : "Name:",
+    "signUp.name" : "Full Name:",
     "signUp.password" : "Password:",
+    "signUp.passwordMatch" : "Passwords match",
+    "signUp.passwordNoMatch" : "Passwords do not match",
+    "signUp.confirm.password" : "Confirm Password:",
     "signUp.button" : "Sign Up",
     "signUp.paragraph" : "Already have an account?",
     "signUp.text.button" : "Log In",
@@ -148,7 +154,7 @@
     "service.form.button" : "Send service",
     "service.img" : "Service Image: ",
 
-    "modal.email" : "Email:",
+    "modal.email" : "Email Address:",
     
     "direction.address" : "Address: Calle Miramontes, Santa Ana, Costa Rica ",
     "direction.phone" : "Phone: ",
