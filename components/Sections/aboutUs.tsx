@@ -22,7 +22,7 @@ export default function AboutUs(
   const { locale } = useContext(langContext);
 
   useEffect(() => {
-    const fetchAboutUs = async () => {
+    const getAboutUs = async () => {
       try {
         const response = await axios.get(AboutUsURL);
         if (response.status === 200) {
@@ -39,7 +39,7 @@ export default function AboutUs(
         //setErrorModal(true);
       }
     };
-    fetchAboutUs();
+    getAboutUs();
   }, []);
 
   return (
