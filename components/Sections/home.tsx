@@ -19,7 +19,7 @@ export default function GeneraHome() {
     const getHome = async () => {
       try {
         const response = await axios.get(HomeURL);
-        if (response.status === 200) {
+        if (response.status === 201) {
           const homeData = response.data;
           setHome(homeData);
         }

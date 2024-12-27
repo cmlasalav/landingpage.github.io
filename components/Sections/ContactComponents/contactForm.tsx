@@ -51,7 +51,6 @@ export default function ContactForm() {
     //return;
     //}
     try {
-      console.log(userForm);
       const response = await axios.post(NodeMailerURL, userForm);
       if (response.status === 200) {
         // setError("form.email.message");

@@ -27,7 +27,6 @@ export default function Register() {
       const response = await axios.post(RegisterURL, user);
       if (response.status === 201) {
         router.push("/auth");
-        console.log(response);
         console.log("User Registered");
       }
     } catch (error) {

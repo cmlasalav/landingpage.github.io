@@ -25,7 +25,7 @@ export default function AboutUs(
     const getAboutUs = async () => {
       try {
         const response = await axios.get(AboutUsURL);
-        if (response.status === 200) {
+        if (response.status === 201) {
           const AboutUs = response.data;
           setAboutUs(AboutUs);
         } else {
