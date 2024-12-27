@@ -4,16 +4,18 @@ import { FormattedMessage } from "react-intl";
 import BackButton from "./BackButton";
 import LangHeader from "./LangHeader";
 
-export default function Header({
-  // isBlogIdView,
-  // isNewpostView,
-  // isProfileView,
-  // onBack,
-  // onLoginClick,
-  // onSignOutClick,
-  // onProfileClick,
-  // userAuthenticated,
-}) {
+export default function Header(
+  {
+    // isBlogIdView,
+    // isNewpostView,
+    // isProfileView,
+    // onBack,
+    // onLoginClick,
+    // onSignOutClick,
+    // onProfileClick,
+    // userAuthenticated,
+  }
+) {
   const handleScroll = (section) => {
     scroller.scrollTo(section, {
       smooth: true,
@@ -151,7 +153,9 @@ export default function Header({
               <LangHeader />
             </>
               )}*/}
-            </> {/*Delete*/}
+              {/*Delete*/}
+              <LangHeader />
+            </>{" "}
           </ul>
         </nav>
       </div>
