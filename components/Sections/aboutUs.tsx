@@ -11,7 +11,12 @@ import Achievements from "../../public/images/Achievements.jpg";
 
 const AboutUsURL = "http://localhost:5000/aboutUs";
 
-export default function AboutUs({ setModalMessage, setErrorModal }) {
+export default function AboutUs(
+  {
+    //setModalMessage,
+    //setErrorModal
+  }
+) {
   const [aboutUs, setAboutUs] = useState([]);
   const images = [Journey, Team, Achievements];
   const { locale } = useContext(langContext);

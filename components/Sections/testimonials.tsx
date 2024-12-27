@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 const TestimonialsURL = "http://localhost:5000/testimonials";
 
 export default function Testimonials({
-  setModalMessage,
-  setErrorModal,
-  rol,
-  setConfirm,
+  // setModalMessage,
+  // setErrorModal,
+  // rol,
+  // setConfirm,
 }) {
   const [testimonials, setTestimonials] = useState([]);
 
