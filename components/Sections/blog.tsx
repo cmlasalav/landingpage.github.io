@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import Post from "../BlogComponents/Post";
 
-const BlogURL = "http://localhost:5000/blog";
+const BlogURL = "https://landingpage-backend-one.vercel.app/blog";
 
 export default function Blog(
   {

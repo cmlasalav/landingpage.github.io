@@ -9,7 +9,7 @@ import { langContext } from "../../context/langContext";
 import Logo from "../../public/images/Logo-White.jpg";
 //import Loading
 
-const HomeURL = "http://localhost:5000/home";
+const HomeURL = "https://landingpage-backend-one.vercel.app/home";
 
 export default function GeneraHome() {
   const [home, setHome] = useState([]);

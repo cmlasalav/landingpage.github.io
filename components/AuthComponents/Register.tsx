@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-const RegisterURL = "http://localhost:5000/register";
+const RegisterURL = "https://landingpage-backend-one.vercel.app/register";
 export default function Register() {
   const [user, setUser] = useState({
     fullName: "",

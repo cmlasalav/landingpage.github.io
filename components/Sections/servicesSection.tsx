@@ -8,7 +8,7 @@ import ServiceLogo from "../../public/images/Services.jpg";
 //import Loading from "../../Parts/Loading";
 //import NewServices from "./NewServices";
 
-const ServicesURL = "http://localhost:5000/services";
+const ServicesURL = "https://landingpage-backend-one.vercel.app/services";
 
 export default function Services(
   {

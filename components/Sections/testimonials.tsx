@@ -2,7 +2,7 @@ import axios from "axios";
 import { FormattedMessage, FormattedDate } from "react-intl";
 import { useState, useEffect } from "react";
 
-const TestimonialsURL = "http://localhost:5000/testimonials";
+const TestimonialsURL = "https://landingpage-backend-one.vercel.app/testimonials";
 
 export default function Testimonials({
   // setModalMessage,
