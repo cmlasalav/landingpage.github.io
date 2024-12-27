@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 
 export default function Post({
   post,
-  user,
-  onNewPost,
-  onReadMore,
-  isVisible,
-  setErrorModal,
-  setModalMessage,
-  setConfirm,
+  // user,
+  // onNewPost,
+  // onReadMore,
+  // isVisible,
+  // setErrorModal,
+  // setModalMessage,
+  // setConfirm,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -93,7 +93,7 @@ export default function Post({
                         </p>
                       </div>
                       <button
-                        onClick={() => onReadMore(post._id, user)}
+                        //onClick={() => onReadMore(post._id, user)}
                         className="text-[#0d98e2] border border-[#0d98e2] px-4 py-2 rounded-full hover:bg-[#0d98e2] hover:text-white transition-colors"
                       >
                         <FormattedMessage
@@ -102,9 +102,11 @@ export default function Post({
                         />
                       </button>
                     </div>
+                    {/*}
                     {isVisible && (
                       <PostVisibility isVisible={post.PostStatus} />
                     )}
+                    */}
                   </div>
                 </div>
               );
@@ -136,8 +138,8 @@ export default function Post({
       {/* Latest Posts Sidebar */}
       <LatestPost
         latestPosts={latestPosts}
-        onReadMore={onReadMore}
-        user={user}
+        // onReadMore={onReadMore}
+        // user={user}
       />
     </div>
   );

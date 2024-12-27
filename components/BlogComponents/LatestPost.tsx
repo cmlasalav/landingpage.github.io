@@ -1,6 +1,10 @@
 import { FormattedMessage, FormattedDate } from "react-intl";
 
-export default function LatestPost({ latestPosts, onReadMore, user }) {
+export default function LatestPost({
+  latestPosts,
+  // onReadMore,
+  // user
+}) {
   const firstParagraph = (postBody) => {
     for (const content of postBody) {
       if (typeof content === "string") {
@@ -44,7 +48,7 @@ export default function LatestPost({ latestPosts, onReadMore, user }) {
                 </p>
                 <div className="flex items-center justify-between">
                   <button
-                    onClick={() => onReadMore(post._id, user)}
+                    //onClick={() => onReadMore(post._id, user)}
                     className="text-[#0d98e2] text-sm hover:underline"
                   >
                     <FormattedMessage

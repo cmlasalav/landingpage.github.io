@@ -5,7 +5,13 @@ import Post from "../BlogComponents/Post";
 
 const BlogURL = "http://localhost:5000/blog";
 
-export default function Blog({ onReadMore, onNewPost, setModalMessage }) {
+export default function Blog(
+  {
+    // onReadMore,
+    // onNewPost,
+    // setModalMessage
+  }
+) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -43,7 +49,11 @@ export default function Blog({ onReadMore, onNewPost, setModalMessage }) {
         </p>
       </div>
 
-      <Post post={posts} onNewPost={onNewPost} onReadMore={onReadMore} />
+      <Post
+        post={posts}
+        // onNewPost={onNewPost}
+        // onReadMore={onReadMore}
+      />
     </section>
   );
 }

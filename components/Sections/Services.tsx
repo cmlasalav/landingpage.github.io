@@ -11,9 +11,9 @@ import ServiceLogo from "../../public/images/Services.jpg";
 const ServicesURL = "http://localhost:5000/services";
 
 export default function Services({
-  setModalMessage,
-  setErrorModal,
-  setConfirm,
+  // setModalMessage,
+  // setErrorModal,
+  // setConfirm,
 }) {
   const [services, setServices] = useState([]);
   const [newService, setNewService] = useState(false);
