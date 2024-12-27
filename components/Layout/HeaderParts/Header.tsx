@@ -137,25 +137,18 @@ export default function Header(
                   </li>
                 </>
               ) : (
-                <li>
-                  <Link
-                    href="/auth"
-                    onClick={onLoginClick}
-                    className="bg-transparent border-none cursor-pointer text-inherit"
-                  >
-                    <FormattedMessage
-                      id="header.login"
-                      defaultMessage="Login"
-                    />
-                  </Link>
-                </li>
-              )}
+               */}
+              <li>
+                <Link
+                  href="/auth"
+                  className="bg-transparent border-none cursor-pointer text-inherit"
+                >
+                  <FormattedMessage id="header.login" defaultMessage="Login" />
+                </Link>
+              </li>
+              {/*} )} */}
               <LangHeader />
             </>
-              )}*/}
-              {/*Delete*/}
-              <LangHeader />
-            </>{" "}
           </ul>
         </nav>
       </div>
