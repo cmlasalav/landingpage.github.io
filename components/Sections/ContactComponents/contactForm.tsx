@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 //import EmailError from "../../Parts/EmailError.jsx";
 //import Loader from "../../Parts/Loader.jsx";
 
-const NodeMailerURL = "http://localhost:5000/contact";
+const NodeMailerURL = "https://landingpage-backend-one.vercel.app//contact";
 
 export default function ContactForm() {
   const [error, setError] = useState();
