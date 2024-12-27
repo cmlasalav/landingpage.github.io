@@ -14,7 +14,7 @@
       "isolatedModules": true,
       "jsx": "preserve",
       "incremental": true,
-      "baseUrl": ".", // Define el directorio base como la raíz del proyecto
+      "baseUrl": ".",
       "paths": {
         "@components/*": ["components/*"],
         "@sections/*": ["components/Sections/*"]
