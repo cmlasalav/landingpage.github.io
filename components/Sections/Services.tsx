@@ -10,7 +10,7 @@ import ServiceLogo from "../../public/images/Services.jpg";
 
 const ServicesURL = "http://localhost:5000/services";
 
-export default function services(
+export default function Services(
   {
     // setModalMessage,
     // setErrorModal,
