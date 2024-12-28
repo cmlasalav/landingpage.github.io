@@ -1,8 +1,64 @@
+import axios from "axios";
 import { FormattedMessage } from "react-intl";
+import { useState } from "react";
+import { auth } from "../../firebase-config"; //Check
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"; //Check
+import { useToast } from "../../context/toastContext";
+import { useRouter } from "next/router";
+
+const GoogleURL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function GoogleSignIn() {
-  const handleGoogleLogin = () => {
-    // Handle Google login logic here
-    console.log("Google login attempted");
+  //Loader State
+  const [loader, setLoader] = useState(false);
+
+  //Context
+  const { showToast } = useToast();
+
+  //Router
+  const router = useRouter();
+
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault();
+    setLoader(true);
+    try {
+      //PopUp Google Sign In
+      const provider = new GoogleAuthProvider();
+
+      const result = await signInWithPopup(auth, provider);
+      //UserInfo
+      const userName = result.user.displayName;
+      const userToken = await result.user.getIdToken();
+      //Token validation
+      const response = await axios.post(`${GoogleURL}/google`, {
+        token: userToken,
+        name: userName,
+      });
+      if (response.status === 201) {
+        showToast({ message: "login.success", typeMessage: "success" });
+        router.push("/");
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const errorCode = error.response.data.errorInfo?.code;
+        if (errorCode === "auth/invalid-input") {
+          showToast({ message: "login.email.error", typeMessage: "error" });
+        } else if (errorCode === "server/error") {
+          showToast({ message: "signUp.google.error", typeMessage: "error" });
+        }
+      } else {
+        if (error.code === "auth/popup-closed-by-user") {
+          showToast({
+            message: "signUp.google.error.popUp",
+            typeMessage: "error",
+          });
+        } else {
+          showToast({ messsage: "signUp.google.error", typeMessage: "error" });
+        }
+      }
+    } finally {
+      setLoader(false);
+    }
   };
 
   return (

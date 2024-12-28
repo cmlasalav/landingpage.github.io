@@ -9,7 +9,7 @@ import Team from "../../public/images/Team.jpg";
 import Achievements from "../../public/images/Achievements.jpg";
 //import Loading from "../Parts/Loading";
 
-const AboutUsURL = "https://landingpage-backend-one.vercel.app/aboutUs";
+const AboutUsURL = `${process.env.NEXT_PUBLIC_API_URL}/aboutUs`;
 
 export default function AboutUs(
   {

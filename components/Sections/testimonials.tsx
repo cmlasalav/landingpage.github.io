@@ -2,14 +2,16 @@ import axios from "axios";
 import { FormattedMessage, FormattedDate } from "react-intl";
 import { useState, useEffect } from "react";
 
-const TestimonialsURL = "https://landingpage-backend-one.vercel.app/testimonials";
+const TestimonialsURL = `${process.env.NEXT_PUBLIC_API_URL}/testimonials`;
 
-export default function Testimonials({
-  // setModalMessage,
-  // setErrorModal,
-  // rol,
-  // setConfirm,
-}) {
+export default function Testimonials(
+  {
+    // setModalMessage,
+    // setErrorModal,
+    // rol,
+    // setConfirm,
+  }
+) {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {

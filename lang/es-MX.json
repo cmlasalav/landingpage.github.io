@@ -130,6 +130,7 @@
     "login.close" : "Cerrar",
     "login.email.error" : "Contraseña y correo incorrectos",
     "login.google" : "Iniciar Sesión con Google",
+    "login.success" : "Inicio de sesión exitoso",
 
     "signUp.title" : "Registrarse",
     "signUp.name" : "Nombre completo:",
