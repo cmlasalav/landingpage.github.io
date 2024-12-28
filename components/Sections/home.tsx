@@ -9,7 +9,7 @@ import { langContext } from "../../context/langContext";
 import Logo from "../../public/images/Logo-White.jpg";
 //import Loading
 
-const HomeURL = `${process.env.NEXT_PUBLIC_API_UR}/home`;
+const HomeURL = `${process.env.NEXT_PUBLIC_API_URL}/home`;
 
 export default function GeneraHome() {
   const [home, setHome] = useState([]);
