@@ -9,7 +9,6 @@ export const ToastProvider = ({ children }) => {
   const [typeMessage, setTypeMessage] = useState(null);
 
   const showToast = (toastData) => {
-    console.log("toastData", toastData);
     setToastMessage(toastData.message);
     setTypeMessage(toastData.typeMessage);
   };
