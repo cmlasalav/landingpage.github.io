@@ -1,19 +1,22 @@
 import Image from "next/image";
-import Direction from "../../Parts/Direction";
-import DirectionIMG from "../../../public/images/Services.jpg";
-const DirectionURL = "https://www.google.com/maps";
+import Direction from "@components/Parts/Direction";
+import Logo from "../../../public/images/Services.jpg";
 
-export default function ConnectDirection() {
+export default function ContactDirection() {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 w-[50rem]">
-      <Direction />
-      <a href={DirectionURL} className="block mt-4">
+    <div className="bg-white rounded-lg shadow-md p-6 h-full">
+      <div className="space-y-4 mb-6">
+        <Direction />
+      </div>
+      <div className="relative w-full h-[500px]">
         <Image
-          src={DirectionIMG}
-          alt="Direction"
-          className="w-full h-auto rounded-lg"
-        />
-      </a>
+          src={Logo}
+          alt="Services"
+          style={{ border: 0 }}
+          loading="lazy"
+          className="rounded-lg"
+        ></Image>
+      </div>
     </div>
   );
 }

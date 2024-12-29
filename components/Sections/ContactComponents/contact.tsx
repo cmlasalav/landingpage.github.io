@@ -5,7 +5,10 @@ import ContactForm from "./contactForm";
 
 export default function Contact() {
   return (
-    <section id="Contact" className="max-w-7xl px-4 py-8 sm:px-6 lg:px-8 ml-10">
+    <section
+      id="Contact"
+      className="max-w-[1400px] ml-10 px-4 py-8 sm:px-6 lg:px-8"
+    >
       <h1 className="text-4xl font-bold mb-4">
         <span className="text-[#76829e]">
           <FormattedMessage id="section.contact" defaultMessage="Contact" />
@@ -25,12 +28,14 @@ export default function Contact() {
           />
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-1/2 space-y-8">
           <ContactForm />
           <ContactWithUs />
         </div>
-        <ContactDirection />
+        <div className="lg:w-2/3">
+          <ContactDirection />
+        </div>
       </div>
     </section>
   );
