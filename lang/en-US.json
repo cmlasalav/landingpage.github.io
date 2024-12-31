@@ -97,7 +97,6 @@
     "modal.success.login" : "Register successfully! Please Log In.",
     
     "modal.button.accept" : "Accept",
-    "modal.general.error" : "An error occurred.",
 
     "error.post.user" : "Unable to load posts.",
     "error.signOut" : "We're unable to log you out at this time. Please try again later.",
@@ -193,6 +192,9 @@
 
     "post-private-page.title" : "Sorry! Page not found.",
     "post-private-page.subtitle" : "It seems this post was deleted or made private by the user.",
+    "post-private-page.subtitle2" : "Let's get you back on track",
+    "post-private-page.button" : "Return Home",
+    "post-private-page.counter" : "Redirecting you in {counter} seconds...",
 
     "post.delete.button" : "Delete post",
     "comment.delete.button" : "Delete comment",

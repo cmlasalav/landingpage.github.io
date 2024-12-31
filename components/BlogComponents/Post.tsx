@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FormattedDate, FormattedMessage } from "react-intl";
 import PostVisibility from "../BlogComponents/PostVisibility";
 import LatestPost from "./LatestPost";
@@ -92,15 +93,15 @@ export default function Post({
                           />
                         </p>
                       </div>
-                      <button
-                        //onClick={() => onReadMore(post._id, user)}
+                      <Link
+                        href={`/blog/${post._id}`}
                         className="text-[#0d98e2] border border-[#0d98e2] px-4 py-2 rounded-full hover:bg-[#0d98e2] hover:text-white transition-colors"
                       >
                         <FormattedMessage
                           id="blog.button"
                           defaultMessage="Read more"
                         />
-                      </button>
+                      </Link>
                     </div>
                     {/*}
                     {isVisible && (

@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { FormattedMessage, FormattedDate } from "react-intl";
 
 export default function LatestPost({
   latestPosts,
-  // onReadMore,
   // user
 }) {
   const firstParagraph = (postBody) => {
@@ -47,15 +47,15 @@ export default function LatestPost({
                   />
                 </p>
                 <div className="flex items-center justify-between">
-                  <button
-                    //onClick={() => onReadMore(post._id, user)}
+                  <Link
+                   href={`/blog/${post._id}`}
                     className="text-[#0d98e2] text-sm hover:underline"
                   >
                     <FormattedMessage
                       id="blog.button"
                       defaultMessage="Read more"
                     />
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className="w-24 h-24 bg-gray-200 rounded-lg flex-shrink-0">

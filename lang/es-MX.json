@@ -193,6 +193,9 @@
 
   "post-private-page.title": "¡Lo sentimos! Publicación no disponible",
   "post-private-page.subtitle": "Este post ha sido eliminado o hecho privado por el autor",
+  "post-private-page.subtitle2": "Vamos a ayudarte a volver al camino",
+  "post-private-page.button": "Regresar al Inicio",
+  "post-private-page.counter": "Redirigiéndote en {counter} segundos...",
 
   "post.delete.button": "Eliminar publicación",
   "comment.delete.button": "Eliminar comentario",
