@@ -4,19 +4,18 @@ import { FormattedMessage } from "react-intl";
 import BackButton from "./BackButton";
 import LangHeader from "./LangHeader";
 
-export default function Header(
-  {
-    // isBlogIdView,
-    // isNewpostView,
-    // isProfileView,
-    // onBack,
-    // onLoginClick,
-    // onSignOutClick,
-    // onProfileClick,
-    // userAuthenticated,
-  }
-) {
-  const handleScroll = (section) => {
+export default function Header({
+  // isBlogIdView,
+  // isNewpostView,
+  // isProfileView,
+  // onBack,
+  // onLoginClick,
+  // onProfileClick,
+  onSignOutClick,
+  userAuthenticated,
+}) {
+  //  Scroll to section
+  const handleScroll = (section: string) => {
     scroller.scrollTo(section, {
       smooth: true,
       duration: 500,
@@ -110,45 +109,48 @@ export default function Header(
                   />
                 </button>
               </li>
-              {/*
-              {userAuthenticated ? (
-                <>
-                  <li>
-                    <button
-                      onClick={onSignOutClick}
-                      className="bg-transparent border-none cursor-pointer text-inherit"
-                    >
-                      <FormattedMessage
-                        id="header.signOut"
-                        defaultMessage="Sign Out"
-                      />
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={onProfileClick}
-                      className="bg-transparent border-none cursor-pointer text-inherit"
-                    >
-                      <FormattedMessage
-                        id="header.profile"
-                        defaultMessage="Profile"
-                      />
-                    </button>
-                  </li>
-                </>
-              ) : (
-               */}
-              <li>
-                <Link
-                  href="/auth"
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                >
-                  <FormattedMessage id="header.login" defaultMessage="Login" />
-                </Link>
-              </li>
-              {/*} )} */}
-              <LangHeader />
             </>
+            {userAuthenticated ? (
+              <>
+                <li>
+                  <button
+                    onClick={onSignOutClick}
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                  >
+                    <FormattedMessage
+                      id="header.signOut"
+                      defaultMessage="Sign Out"
+                    />
+                  </button>
+                </li>
+               {/*<li>
+                  <Link
+                    href="/profile"
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                  >
+                    <FormattedMessage
+                      id="header.profile"
+                      defaultMessage="Profile"
+                    />
+                  </Link>
+                </li> */}
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    href="/auth"
+                    className="bg-transparent border-none cursor-pointer text-inherit"
+                  >
+                    <FormattedMessage
+                      id="header.login"
+                      defaultMessage="Login"
+                    />
+                  </Link>
+                </li>
+              </>
+            )}
+            <LangHeader />
           </ul>
         </nav>
       </div>

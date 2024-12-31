@@ -1,10 +1,12 @@
 import { FormattedMessage } from "react-intl";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useToast } from "../../context/toastContext";
-import { toast } from "react-toastify";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; //Check
 import { useRouter } from "next/router";
 import Loader from "@components/Parts/Loader";
+import axios from "axios";
+
+const LoginURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Login() {
   //Toast Message
@@ -33,17 +35,23 @@ export default function Login() {
     setLoader(true);
     try {
       const auth = getAuth(); //Check
-      const response = await signInWithEmailAndPassword(
+      const userLogin = await signInWithEmailAndPassword(
         auth,
         user.email,
         user.password
       );
-      showToast({ message: "login.success", typeMessage: "success" });
-      router.push("/");
-      // if (response.status === 200) {
-      //   showToast({ message: "login.success", typeMessage: "success" });
-      //   router.push("/");
-      // }
+      const token = await userLogin.user.getIdToken();
+      const response = await axios.post(
+        `${LoginURL}/login`,
+        { token },
+        { withCredentials: true }
+      );
+      if (response.status === 200) {
+        showToast({ message: "login.success", typeMessage: "success" });
+        router.push("/");
+      } else {
+        showToast({ message: "general.error", typeMessage: "error" });
+      }
     } catch (error) {
       if (
         error.code === "auth/invalid-email" ||

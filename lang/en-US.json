@@ -128,7 +128,9 @@
     "login.close" : "Close",
     "login.email.error" : "Incorrect email or password.",
     "login.google" : "Log In with Google",
-    "login.success" : "Login successfully!",
+    "login.success" : "Login successful!",
+
+    "signOut.success" :"Logout successful!",
 
     "signUp.title" : "Sign Up",
     "signUp.name" : "Full Name:",
@@ -196,8 +198,8 @@
     "comment.delete.button" : "Delete comment",
     "testimonial-delete-button" : "Delete testimonial",
     "post.edit.button" : "Edit post",
-    "comment.edit.button" : "Edit comment"
+    "comment.edit.button" : "Edit comment",
 
-
+    "general.error": "An error occurred."
 
 }
