@@ -8,11 +8,7 @@ export default function Post({
   post,
   // user,
   // onNewPost,
-  // onReadMore,
   // isVisible,
-  // setErrorModal,
-  // setModalMessage,
-  // setConfirm,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);

@@ -10,7 +10,7 @@ const LangProvider = ({ children }) => {
   const [locale, setLocale] = useState("en-US");
 
   useEffect(() => {
-    // Accede a localStorage solo en el cliente
+
     const lang = typeof window !== "undefined" && localStorage.getItem("lang");
     if (lang) {
       setLocale(lang);

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useToast } from "../../context/toastContext";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; //Check
 import { useRouter } from "next/router";
+import { useUserName } from "context/userContext";
 import Loader from "@components/Parts/Loader";
 import axios from "axios";
 
@@ -11,6 +12,9 @@ const LoginURL = process.env.NEXT_PUBLIC_API_URL;
 export default function Login() {
   //Toast Message
   const { showToast } = useToast();
+
+  //UserName
+  const { setUserName } = useUserName();
 
   //Router
   const router = useRouter();
@@ -47,8 +51,11 @@ export default function Login() {
         { withCredentials: true }
       );
       if (response.status === 200) {
+        const userName = response.data.fullName;
         showToast({ message: "login.success", typeMessage: "success" });
         router.push("/");
+        localStorage.setItem("isAuthenticated", "true");
+        setUserName(userName);
       } else {
         showToast({ message: "general.error", typeMessage: "error" });
       }

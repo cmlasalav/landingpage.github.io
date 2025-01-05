@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useToast } from "../context/toastContext";
+import { useUserName } from "context/userContext";
 import AboutUs from "@components/Sections/aboutUs";
 import Blog from "@components/Sections/blog";
 import Contact from "@components/Sections/ContactComponents/contact";
@@ -16,6 +17,9 @@ const TokenURL = process.env.NEXT_PUBLIC_API_URL;
 export default function HomePage() {
   //Toast Message
   const { showToast } = useToast();
+
+  //UserName
+  const { setUserName } = useUserName();
 
   //Loader State
   const [loader, setLoader] = useState(true);
@@ -52,9 +56,11 @@ export default function HomePage() {
       if (response.status === 200) {
         setUserAuthenticated(false);
         showToast({ message: "signOut.success", typeMessage: "success" });
+        localStorage.setItem("isAuthenticated", "false");
+        setUserName(null);
       }
     } catch (error) {
-      showToast({ message: "general.error", typeMessage: "error" });;
+      showToast({ message: "general.error", typeMessage: "error" });
     }
   };
 

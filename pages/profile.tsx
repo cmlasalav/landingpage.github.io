@@ -1,3 +1,4 @@
+import ProfileComponent from "@components/ProfileComponents/Profile";
 export default function Profile() {
-  return <p>Profile</p>;
+  return <ProfileComponent />;
 }

@@ -28,88 +28,67 @@ export default function Header({
       <div className="max-w-7xl mx-auto">
         <nav className="max-w-7xl mx-auto flex justify-end items-center px-8">
           <ul className="flex gap-10">
-            {/*Header in different views*
-            {isNewpostView ? (
-              <>
-                <BackButton onBack={onBack} />
-                <LangHeader />
-              </>
-            ) : isBlogIdView ? (
-              <>
-                <BackButton onBack={onBack} />
-                <LangHeader />
-              </>
-            ) : isProfileView ? (
-              <>
-                <BackButton onBack={onBack} />
-                <LangHeader />
-              </>
-            ) : ( */}
-            <>
-              <li>
-                <button
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                  onClick={() => handleScroll("Home")}
-                >
-                  <FormattedMessage id="header.home" defaultMessage="Home" />
-                </button>
-              </li>
-              <li>
-                <button
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                  onClick={() => handleScroll("AboutUs")}
-                >
-                  <FormattedMessage
-                    id="header.aboutUs"
-                    defaultMessage="About Us"
-                  />
-                </button>
-              </li>
-              <li>
-                <button
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                  onClick={() => handleScroll("Services")}
-                >
-                  <FormattedMessage
-                    id="header.services"
-                    defaultMessage="Our Services"
-                  />
-                </button>
-              </li>
-              <li>
-                <button
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                  onClick={() => handleScroll("Testimonials")}
-                >
-                  <FormattedMessage
-                    id="header.testimonials"
-                    defaultMessage="Testimonials"
-                  />
-                </button>
-              </li>
-              <li>
-                <button
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                  onClick={() => handleScroll("Blog")}
-                >
-                  <FormattedMessage
-                    id="header.blog"
-                    defaultMessage="Blog/News"
-                  />
-                </button>
-              </li>
-              <li>
-                <button
-                  className="bg-transparent border-none cursor-pointer text-inherit"
-                  onClick={() => handleScroll("Contact")}
-                >
-                  <FormattedMessage
-                    id="header.contact"
-                    defaultMessage="Contact"
-                  />
-                </button>
-              </li>
-            </>
+            <li>
+              <button
+                className="bg-transparent border-none cursor-pointer text-inherit"
+                onClick={() => handleScroll("Home")}
+              >
+                <FormattedMessage id="header.home" defaultMessage="Home" />
+              </button>
+            </li>
+            <li>
+              <button
+                className="bg-transparent border-none cursor-pointer text-inherit"
+                onClick={() => handleScroll("AboutUs")}
+              >
+                <FormattedMessage
+                  id="header.aboutUs"
+                  defaultMessage="About Us"
+                />
+              </button>
+            </li>
+            <li>
+              <button
+                className="bg-transparent border-none cursor-pointer text-inherit"
+                onClick={() => handleScroll("Services")}
+              >
+                <FormattedMessage
+                  id="header.services"
+                  defaultMessage="Our Services"
+                />
+              </button>
+            </li>
+            <li>
+              <button
+                className="bg-transparent border-none cursor-pointer text-inherit"
+                onClick={() => handleScroll("Testimonials")}
+              >
+                <FormattedMessage
+                  id="header.testimonials"
+                  defaultMessage="Testimonials"
+                />
+              </button>
+            </li>
+            <li>
+              <button
+                className="bg-transparent border-none cursor-pointer text-inherit"
+                onClick={() => handleScroll("Blog")}
+              >
+                <FormattedMessage id="header.blog" defaultMessage="Blog/News" />
+              </button>
+            </li>
+            <li>
+              <button
+                className="bg-transparent border-none cursor-pointer text-inherit"
+                onClick={() => handleScroll("Contact")}
+              >
+                <FormattedMessage
+                  id="header.contact"
+                  defaultMessage="Contact"
+                />
+              </button>
+            </li>
+
             {userAuthenticated ? (
               <>
                 <li>
@@ -123,7 +102,7 @@ export default function Header({
                     />
                   </button>
                 </li>
-               {/*<li>
+                {/* <li>
                   <Link
                     href="/profile"
                     className="bg-transparent border-none cursor-pointer text-inherit"

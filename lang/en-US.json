@@ -31,8 +31,6 @@
     "blogId.date" : "Date: ",
     "blogId.tags" : "Tags: ",
 
-    "tags.available" : "Tags",
-    "tags.unavailable" : "Unavailable tags",
 
     "comment.title" : "Comments",
     "comment.button" : "New Comment",
@@ -67,7 +65,6 @@
 
     "modal.error.postContent" : "You cannot modify the content of this post at this time.",
     "modal.error.role" : "The role could not be found.",
-    "modal.error.tags" : "Tags unavailable.",
     "modal.confirm.testimonial": "The testimonial has been submitted.",
     "modal.error.testimonial" : "The testimonial submission failed.",
     "modal.confirm.newPost" : "The post has been submitted.",
@@ -93,8 +90,12 @@
     "modal.error.edit.post" : "The post could not be updated.",
     "modal.edit.user" : "The user has been successfully updated.",
     "modal.error.edit.user" : "The changes could not be made.",
+    "modal.error.post" : "The post could not be created.",
+    "modal.error.comment" : "The comment could not be created.",
     "modal.confirm.question" : "Are you sure you want to continue?",
     "modal.success.login" : "Register successfully! Please Log In.",
+    "modal.success.post" : "Post successfully created.",
+    "modal.success.comment" : "Comment successfully created.",
     
     "modal.button.accept" : "Accept",
 
