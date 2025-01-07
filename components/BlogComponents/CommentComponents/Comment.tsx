@@ -122,6 +122,9 @@ export default function Comment({ postId }) {
                   closeForm={closeForm}
                   parentId={comment._id}
                   postId={postId}
+                  onAddComment={(newComment) =>
+                    setComments((prevComments) => [...prevComments, newComment])
+                  }
                 />
               </div>
             )}
@@ -173,7 +176,13 @@ export default function Comment({ postId }) {
           <div className="space-y-4">{renderComments(comments)}</div>
           {addingComment && (
             <div className="mt-4">
-              <CommentForm closeForm={closeForm} postId={postId} />
+              <CommentForm
+                closeForm={closeForm}
+                postId={postId}
+                onAddComment={(newComment) =>
+                  setComments((prevComments) => [...prevComments, newComment])
+                }
+              />
             </div>
           )}
         </>

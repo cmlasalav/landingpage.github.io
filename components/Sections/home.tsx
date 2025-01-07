@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Link as ScrollLink } from "react-scroll";
 import { langContext } from "../../context/langContext";
 import Logo from "../../public/images/Logo-White.jpg";
-//import Loading
+import NoData from "../Parts/NoData";
 
 const HomeURL = `${process.env.NEXT_PUBLIC_API_URL}/home`;
 
@@ -34,6 +34,7 @@ export default function GeneraHome() {
     <section id="Home" className="mt-0 bg-white rounded-2xl">
       <div className="w-full flex flex-col items-center justify-center bg-[#aab3ab] rounded-2xl relative min-h-200">
         <div className="w-full h-60 bg-white pt-4 text-center absolute top-0 rounded-t-2xl z-10 "></div>
+        <NoData data={home} messageLoading="loading.information" />
         <div className="max-w-[75rem] bg-white text-center mb-24 relative z-20 px-4">
           {home.map((info, index) => (
             <div key={index}>

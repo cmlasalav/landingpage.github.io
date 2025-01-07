@@ -12,25 +12,27 @@ import Loader from "../Parts/Loader";
 const ProfileURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Profile() {
+  //User State
   const [profile, setProfile] = useState({
-    name: "",
+    fullName: "",
     email: "",
     role: "",
   });
-
+  //Toast Message
   const { showToast } = useToast();
-
+  //Editing
   const [editing, setEditing] = useState(false);
+  //Loader State
   const [loader, setLoader] = useState(true);
 
   const handleEdit = async () => {
     if (editing) {
       try {
         const response = await axios.put(
-          `${ProfileURL}/uid`,
+          `${ProfileURL}/user`,
           {
             Body: {
-              name: profile.name,
+              name: profile.fullName,
             },
           },
           {
@@ -51,11 +53,11 @@ export default function Profile() {
   useEffect(() => {
     const userProfile = async () => {
       try {
-        const response = await axios.post(ProfileURL, {
+        const response = await axios.get(`${ProfileURL}/user`, {
           withCredentials: true,
         });
         if (response.status === 200) {
-          const userProfile = response.data.userData;
+          const userProfile = response.data;
           setProfile(userProfile);
         }
       } catch (error) {
@@ -86,14 +88,14 @@ export default function Profile() {
             {editing ? (
               <input
                 type="text"
-                value={profile.name}
+                value={profile.fullName}
                 onChange={(e) =>
-                  setProfile({ ...profile, name: e.target.value })
+                  setProfile({ ...profile, fullName: e.target.value })
                 }
                 className="border-2 border-blue-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             ) : (
-              profile.name
+              profile.fullName
             )}
           </p>
           <p className="text-gray-700">
@@ -121,72 +123,6 @@ export default function Profile() {
           />
         </button>
       </div>
-
-      {/* {profile.role && (
-        <div className="space-y-8">
-          {profile.role !== "user" ? (
-            <>
-              <PostsAdmin
-                onReadMore={onReadMore}
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userView={profile.role}
-              />
-              <TestimonialsAdmin
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userView={profile.role}
-              />
-              <CommentsAdmin
-                onReadMore={onReadMore}
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userView={profile.role}
-              />
-              <PostUser
-                onNewPost={onNewPost}
-                onReadMore={onReadMore}
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userName={profile.name}
-                userView="user"
-              />
-              <CommentUser
-                onReadMore={onReadMore}
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userName={profile.name}
-                userView="user"
-              />
-            </>
-          ) : (
-            <>
-              <PostUser
-                onNewPost={onNewPost}
-                onReadMore={onReadMore}
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userName={profile.name}
-                userView={profile.role}
-              />
-              <CommentUser
-                onReadMore={onReadMore}
-                setErrorModal={setErrorModal}
-                setModalMessage={setModalMessage}
-                setConfirm={setConfirm}
-                userName={profile.name}
-                userView={profile.role}
-              />
-            </>
-          )}
-        </div>
-      )} */}
     </div>
   );
 }

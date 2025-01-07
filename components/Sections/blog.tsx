@@ -2,16 +2,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import Post from "../BlogComponents/Post";
+import NoData from "../Parts/NoData";
 
 const BlogURL = `${process.env.NEXT_PUBLIC_API_URL}/blog`;
 
-export default function Blog(
-  {
-    // onReadMore,
-    // onNewPost,
-    // setModalMessage
-  }
-) {
+export default function Blog() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -48,12 +43,8 @@ export default function Blog(
           />
         </p>
       </div>
-
-      <Post
-        post={posts}
-        // onNewPost={onNewPost}
-        // onReadMore={onReadMore}
-      />
+      <NoData data={posts} messageLoading="loading.post" />
+      <Post post={posts} />
     </section>
   );
 }

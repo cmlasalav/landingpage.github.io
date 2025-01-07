@@ -1,17 +1,11 @@
 import axios from "axios";
 import { FormattedMessage, FormattedDate } from "react-intl";
 import { useState, useEffect } from "react";
+import NoData from "../Parts/NoData";
 
 const TestimonialsURL = `${process.env.NEXT_PUBLIC_API_URL}/testimonials`;
 
-export default function Testimonials(
-  {
-    // setModalMessage,
-    // setErrorModal,
-    // rol,
-    // setConfirm,
-  }
-) {
+export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
@@ -25,15 +19,9 @@ export default function Testimonials(
               new Date(a.TestimonialDate).getTime()
           );
           setTestimonials(dateTestimonials);
-        } else {
-          console.log("Error");
-          //setErrorModal(true);
-          //setModalMessage("modal.general.error");
         }
       } catch (error) {
         console.error("Error", error);
-        //setErrorModal(true);
-        //setModalMessage("modal.general.error");
       }
     };
     getTestimonials();
@@ -55,6 +43,7 @@ export default function Testimonials(
           />
         </span>
       </h1>
+      <NoData data={testimonials} messageLoading="loading.testimonials" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="bg-white rounded-2xl shadow-md p-8 m-2">

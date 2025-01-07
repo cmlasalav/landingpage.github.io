@@ -5,18 +5,12 @@ import { FormattedMessage } from "react-intl";
 import { langContext } from "../../context/langContext";
 import ServiceLogo from "../../public/images/Services.jpg";
 //import AddNew from "../../Parts/AddNew";
-//import Loading from "../../Parts/Loading";
+import NoData from "../Parts/NoData";
 //import NewServices from "./NewServices";
 
 const ServicesURL = `${process.env.NEXT_PUBLIC_API_URL}/services`;
 
-export default function Services(
-  {
-    // setModalMessage,
-    // setErrorModal,
-    // setConfirm,
-  }
-) {
+export default function Services() {
   const [services, setServices] = useState([]);
   const [newService, setNewService] = useState(false);
   const { locale } = useContext(langContext);
@@ -28,15 +22,9 @@ export default function Services(
         if (response.status === 201) {
           const services = response.data;
           setServices(services);
-        } else {
-          console.log("Error");
-          // setModalMessage("modal.general.error");
-          // setErrorModal(true);
         }
       } catch (error) {
         console.log("Error", error);
-        //setModalMessage("modal.general.error");
-        //setErrorModal(true);
       }
     };
 
@@ -64,7 +52,7 @@ export default function Services(
           />
         </span>
       </h1>
-      {/*<Loading data={services} messageLoading="loading.services" />*/}
+      <NoData data={services} messageLoading="loading.services" />
       <div className="flex flex-wrap justify-center gap-8">
         {/*
         {!newService && (

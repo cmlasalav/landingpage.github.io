@@ -7,7 +7,7 @@ import { langContext } from "../../context/langContext";
 import Journey from "../../public/images/Journey.jpg";
 import Team from "../../public/images/Team.jpg";
 import Achievements from "../../public/images/Achievements.jpg";
-//import Loading from "../Parts/Loading";
+import NoData from "../Parts/NoData";
 
 const AboutUsURL = `${process.env.NEXT_PUBLIC_API_URL}/aboutUs`;
 
@@ -28,15 +28,9 @@ export default function AboutUs(
         if (response.status === 201) {
           const AboutUs = response.data;
           setAboutUs(AboutUs);
-        } else {
-          console.log("Error");
-          //setModalMessage("modal.AboutUs.error");
-          //setErrorModal(true);
         }
       } catch (error) {
         console.log("Error", error);
-        //setModalMessage("modal.general.error");
-        //setErrorModal(true);
       }
     };
     getAboutUs();
@@ -55,7 +49,7 @@ export default function AboutUs(
           <FormattedMessage id="section.aboutUs.title2" defaultMessage="Us" />
         </span>
       </h2>
-      {/*<Loading data={aboutUs} messageLoading="loading.information" />*/}
+      <NoData data={aboutUs} messageLoading="loading.information" />
       <div className="flex flex-wrap gap-4 justify-center">
         {aboutUs.map((info, index) => (
           <div

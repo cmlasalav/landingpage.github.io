@@ -145,7 +145,7 @@
     "signUp.password.error" : "Password too weak.",
     "signUp.invalid.email" : "Invalid email.",
     "signUp.invalid.input" : "Complete the require fields.",
-    "signUp.google" : "Sign Up with Google.",
+    "signUp.google" : "Sign In with Google",
     "signUp.google.error" : "An error occurred using Google.",
     "signUp.google.error.popUp" : "The popup was closed.",
 

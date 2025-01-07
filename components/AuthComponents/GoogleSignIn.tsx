@@ -1,10 +1,11 @@
 import axios from "axios";
 import { FormattedMessage } from "react-intl";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { auth } from "../../firebase-config"; //Check
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"; //Check
 import { useToast } from "../../context/toastContext";
-import { useRouter } from "next/router";
+import { useUserName } from "context/userContext";
 
 const GoogleURL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -12,8 +13,11 @@ export default function GoogleSignIn() {
   //Loader State
   const [loader, setLoader] = useState(false);
 
-  //Context
+  //Toast Message
   const { showToast } = useToast();
+
+  //UserName
+  const { setUserName } = useUserName();
 
   //Router
   const router = useRouter();
@@ -28,15 +32,21 @@ export default function GoogleSignIn() {
       const result = await signInWithPopup(auth, provider);
       //UserInfo
       const userName = result.user.displayName;
-      const userToken = await result.user.getIdToken();
+      const token = await result.user.getIdToken();
       //Token validation
-      const response = await axios.post(`${GoogleURL}/google`, {
-        token: userToken,
-        name: userName,
-      });
-      if (response.status === 201) {
+      const response = await axios.post(
+        `${GoogleURL}/google`,
+        { token },
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
         showToast({ message: "login.success", typeMessage: "success" });
         router.push("/");
+        localStorage.setItem("isAuthenticated", "true");
+        setUserName(userName);
+      } else {
+        showToast({ message: "general.error", typeMessage: "error" });
       }
     } catch (error) {
       if (error.response && error.response.data) {
