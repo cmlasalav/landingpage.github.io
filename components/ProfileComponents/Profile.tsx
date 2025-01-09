@@ -2,12 +2,9 @@ import axios from "axios";
 import { FormattedMessage } from "react-intl";
 import { useState, useEffect } from "react";
 import { useToast } from "../../context/toastContext";
-// import CommentUser from "./CommentsUser";
-// import CommentsAdmin from "./UserPostComponents/AdminComponents/CommentsAdmin";
+import Admin from "./Admin";
 import Loader from "../Parts/Loader";
-// import PostsAdmin from "./UserPostComponents/AdminComponents/PostsAdmin";
-// import PostUser from "./UserPostComponents/PostUser";
-// import TestimonialsAdmin from "./UserPostComponents/AdminComponents/TestimonialsAdmin";
+import User from "./User";
 
 const ProfileURL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -56,6 +53,7 @@ export default function Profile() {
         const response = await axios.get(`${ProfileURL}/user`, {
           withCredentials: true,
         });
+        console.log(response);
         if (response.status === 200) {
           const userProfile = response.data;
           setProfile(userProfile);
@@ -85,7 +83,7 @@ export default function Profile() {
             <span className="font-medium mr-2">
               <FormattedMessage id="profile.name" defaultMessage="Name:" />
             </span>
-            {editing ? (
+            {/* {editing ? (
               <input
                 type="text"
                 value={profile.fullName}
@@ -96,7 +94,7 @@ export default function Profile() {
               />
             ) : (
               profile.fullName
-            )}
+            )} */}
           </p>
           <p className="text-gray-700">
             <span className="font-medium mr-2">
@@ -123,6 +121,8 @@ export default function Profile() {
           />
         </button>
       </div>
+      {profile.role !== "user" && <Admin />}
+      <User />
     </div>
   );
 }

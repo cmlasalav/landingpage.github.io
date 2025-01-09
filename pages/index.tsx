@@ -56,7 +56,7 @@ export default function HomePage() {
       if (response.status === 200) {
         setUserAuthenticated(false);
         showToast({ message: "signOut.success", typeMessage: "success" });
-        localStorage.setItem("isAuthenticated", "false");
+        localStorage.removeItem("isAuthenticated");
         setUserName(null);
       }
     } catch (error) {

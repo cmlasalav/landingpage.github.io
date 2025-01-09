@@ -183,11 +183,11 @@
     "profile.name" : "Name: ",
     "profile.email" : "Email: ", 
     "profile.role" : "Role: ",
-    "profile.post.title" : "Posts made by",
+    "profile.post.title" : "Posts made by {userName}",
     "profile.post.admin.title" : "Posts made by other authors",
     "profile.testimonials.admin.title" : "All Testimonials",
     "profile.comment.admin.title" : "Comments made by other authors",
-    "profile.comment.title" : "Comments made by",
+    "profile.comment.title" : "Comments made by {userName}",
     "profile.edit.button" : "Edit profile",
     "profile.edit.save.button" : "Save changes",
 
@@ -203,6 +203,8 @@
     "post.edit.button" : "Edit post",
     "comment.edit.button" : "Edit comment",
 
-    "general.error": "An error occurred."
+    "general.error": "An error occurred.",
+
+    "more.button" : "Load more"
 
 }

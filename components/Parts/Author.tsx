@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useToast } from "context/toastContext";
 
 const UserURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function AuthorName({ authorToken }) {
+  //Toast Message
+  const { showToast } = useToast();
   const [userName, setUserName] = useState("");
   useEffect(() => {
     const getAuthor = async () => {
@@ -14,10 +17,11 @@ export default function AuthorName({ authorToken }) {
           const name = response.data;
           setUserName(name);
         } else {
-          setUserName("");
+          showToast({ message: "error.info.user", typeMessage: "error" });
+          setUserName("user");
         }
       } catch (error) {
-        console.error("Error fetching author:", error);
+        showToast({ message: "error.info.user", typeMessage: "error" });
         setUserName("user");
       }
     };

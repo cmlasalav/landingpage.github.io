@@ -102,7 +102,7 @@ export default function Header({
                     />
                   </button>
                 </li>
-                {/* <li>
+                <li>
                   <Link
                     href="/profile"
                     className="bg-transparent border-none cursor-pointer text-inherit"
@@ -112,7 +112,7 @@ export default function Header({
                       defaultMessage="Profile"
                     />
                   </Link>
-                </li> */}
+                </li>
               </>
             ) : (
               <>

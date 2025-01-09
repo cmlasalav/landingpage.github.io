@@ -203,5 +203,7 @@
   "post.edit.button": "Editar publicación",
   "comment.edit.button": "Editar comentario",
 
-  "general.error": "Ocurrió un error"
+  "general.error": "Ocurrió un error",
+
+  "more.button" : "Cargar más"
 }

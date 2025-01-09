@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FormattedMessage, FormattedDate } from "react-intl";
 import { useToast } from "../../../context/toastContext";
 import { useRouter } from "next/router";
@@ -21,6 +21,8 @@ export default function Comment({ postId }) {
   const { showToast } = useToast();
   //Comment State
   const [comments, setComments] = useState([]);
+  const commentRefs = useRef({});
+  const [highlightedCommentId, setHighlightedCommentId] = useState(null);
   //Loader State
   const [loader, setLoader] = useState(true);
 
@@ -58,6 +60,17 @@ export default function Comment({ postId }) {
     getComment();
   }, [postId]);
 
+  useEffect(() => {
+    if (router.asPath.includes("#comment-")) {
+      const commentId = router.asPath.split("#comment-")[1];
+      setHighlightedCommentId(commentId);
+      setTimeout(() => {
+        if (commentRefs.current[commentId]) {
+          commentRefs.current[commentId].scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [router.asPath, comments]);
   //#region Comment Form Handler
   const openReplyForm = (commentId) => {
     setReplyingTo(commentId);
@@ -84,10 +97,19 @@ export default function Comment({ postId }) {
     return commentsList
       .filter((comment) => comment.ParentId === parentId)
       .map((comment) => (
-        <div key={comment._id} className={`mb-4 ${parentId ? "ml-6" : ""}`}>
+        <div
+          id={`comment-${comment._id}`}
+          key={comment._id}
+          ref={(el) => {
+            commentRefs.current[comment._id] = el;
+          }}
+          className={`mb-4 ${parentId ? "ml-6" : ""}`}
+        >
           <div
             className={`bg-white border border-gray-200 rounded-lg p-4 ${
               parentId ? "border-l-4 border-l-blue-500" : ""
+            } ${
+              highlightedCommentId === comment._id ? "ring-2 ring-blue-500" : ""
             }`}
           >
             <p className="mb-2">
