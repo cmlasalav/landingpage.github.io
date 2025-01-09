@@ -53,7 +53,6 @@ export default function Profile() {
         const response = await axios.get(`${ProfileURL}/user`, {
           withCredentials: true,
         });
-        console.log(response);
         if (response.status === 200) {
           const userProfile = response.data;
           setProfile(userProfile);
@@ -83,18 +82,19 @@ export default function Profile() {
             <span className="font-medium mr-2">
               <FormattedMessage id="profile.name" defaultMessage="Name:" />
             </span>
-            {/* {editing ? (
-              <input
-                type="text"
-                value={profile.fullName}
-                onChange={(e) =>
-                  setProfile({ ...profile, fullName: e.target.value })
-                }
-                className="border-2 border-blue-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            ) : (
-              profile.fullName
-            )} */}
+            {/* {editing ? ( */}
+            <input
+              type="text"
+              value={profile.fullName}
+              onChange={(e) =>
+                setProfile({ ...profile, fullName: e.target.value })
+              }
+              className="border-2 border-blue-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              readOnly
+            />
+            {/* ) : ( */}
+            {/* profile.fullName */}
+            {/* )} */}
           </p>
           <p className="text-gray-700">
             <span className="font-medium mr-2">
