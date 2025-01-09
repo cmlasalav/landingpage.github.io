@@ -82,20 +82,20 @@ export default function Profile() {
             <span className="font-medium mr-2">
               <FormattedMessage id="profile.name" defaultMessage="Name:" />
             </span>
-            {/* {editing ? ( */}
-            <input
-              type="text"
-              value={profile.fullName}
-              onChange={(e) =>
-                setProfile({ ...profile, fullName: e.target.value })
-              }
-              className="border-2 border-blue-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              readOnly
-            />
-            {/* ) : ( */}
-            {/* profile.fullName */}
+            {/* {editing ? (
+              <input
+                type="text"
+                value={profile.fullName}
+                onChange={(e) =>
+                  setProfile({ ...profile, fullName: e.target.value })
+                }
+                className="border-2 border-blue-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                readOnly
+              />
+            ) : ( */}
+              {profile.fullName}
             {/* )} */}
-          </p>
+           </p> 
           <p className="text-gray-700">
             <span className="font-medium mr-2">
               <FormattedMessage id="profile.email" defaultMessage="Email:" />
@@ -111,7 +111,7 @@ export default function Profile() {
             </p>
           )}
         </div>
-        <button
+        {/* <button
           className="mt-6 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300 ease-in-out"
           onClick={handleEdit}
         >
@@ -119,7 +119,7 @@ export default function Profile() {
             id={editing ? "profile.edit.save.button" : "profile.edit.button"}
             defaultMessage={editing ? "Save changes" : "Edit profile"}
           />
-        </button>
+        </button> */}
       </div>
       {profile.role !== "user" && <Admin />}
       <User />
