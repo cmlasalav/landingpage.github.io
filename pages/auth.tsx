@@ -4,6 +4,7 @@ import Link from "next/link";
 import Loader from "@components/Parts/Loader";
 import Login from "@components/AuthComponents/Login";
 import GoogleSignIn from "@components/AuthComponents/GoogleSignIn";
+import Footer from "@components/Layout/Footer";
 
 export default function AuthPage() {
   const [loader, setLoader] = useState(true);

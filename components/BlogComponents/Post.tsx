@@ -1,32 +1,16 @@
 import Link from "next/link";
 import { FormattedDate, FormattedMessage } from "react-intl";
-import PostVisibility from "../BlogComponents/PostVisibility";
-import LatestPost from "./LatestPost";
 import { useState, useEffect } from "react";
+import { firstParagraph } from "@components/utils/content";
+import LatestPost from "./LatestPost";
 
-export default function Post({
-  post,
-  // user,
-  // onNewPost,
-  // isVisible,
-}) {
+export default function Post({ post }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const firstParagraph = (postBody) => {
-    for (const content of postBody) {
-      if (typeof content === "string") {
-        return <p>{content}</p>;
-      }
-      if (typeof content === "object" && content.contentType === "text") {
-        return <p>{content.contentBody}</p>;
-      }
-    }
-    return null;
-  };
-
-  const latestPosts = post.slice(0, 3);
-  const mainPosts = post.slice(3);
+  const mainPosts = post.length > 3 ? post.slice(3) : post.slice(0, 1);
+  const latestPosts =
+    post.length > 3 ? post.slice(0, 3) : post.slice(1, post.length);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -54,10 +38,13 @@ export default function Post({
           >
             {(() => {
               const post = mainPosts[currentIndex];
-              const firstImage = post.PostBody.find(
-                (content) =>
-                  typeof content === "object" && content.contentType === "image"
-              );
+              const firstImage =
+                Array.isArray(post?.PostBody) &&
+                post.PostBody.find(
+                  (content) =>
+                    typeof content === "object" &&
+                    content.contentType === "image"
+                );
               return (
                 <div className="bg-white rounded-lg overflow-hidden">
                   <div className="aspect-[16/9] bg-gray-200">
@@ -99,11 +86,6 @@ export default function Post({
                         />
                       </Link>
                     </div>
-                    {/*}
-                    {isVisible && (
-                      <PostVisibility isVisible={post.PostStatus} />
-                    )}
-                    */}
                   </div>
                 </div>
               );
@@ -131,13 +113,7 @@ export default function Post({
           ))}
         </div>
       </div>
-
-      {/* Latest Posts Sidebar */}
-      <LatestPost
-        latestPosts={latestPosts}
-        // onReadMore={onReadMore}
-        // user={user}
-      />
+      <LatestPost latestPosts={latestPosts} />
     </div>
   );
 }

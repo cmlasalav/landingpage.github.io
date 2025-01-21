@@ -8,6 +8,7 @@ import AuthorName from "@components/Parts/Author";
 import Comment from "@components/BlogComponents/CommentComponents/Comment";
 import Footer from "@components/Layout/Footer";
 import Loader from "@components/Parts/Loader";
+import LayoutComponent from "@components/Layout/LayoutComponent";
 
 export default function PostId() {
   const [post, setPost] = useState(null);
@@ -48,70 +49,73 @@ export default function PostId() {
 
   return (
     <>
-      <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8"
-      >
-        {/* Header Section */}
-        <div className="mb-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          ></motion.div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            {post.PostTitle}
-          </h1>
+      <LayoutComponent>
+        <motion.article
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8"
+        >
+          {/* Header Section */}
+          <div className="mb-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            ></motion.div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              {post.PostTitle}
+            </h1>
 
-          {/* Author and Meta Information */}
-          <div>
-            <p className="font-medium text-gray-900">
-              <AuthorName authorToken={post.Author} />
-            </p>
-            <div className="flex items-center text-sm text-gray-500 space-x-4">
-              <span>
-                {
-                  <FormattedDate
-                    value={post.PostDate}
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                    weekday="long"
-                  />
-                }
-              </span>
+            {/* Author and Meta Information */}
+            <div>
+              <p className="font-medium text-gray-900">
+                <AuthorName authorToken={post.Author} />
+              </p>
+              <div className="flex items-center text-sm text-gray-500 space-x-4">
+                <span>
+                  {
+                    <FormattedDate
+                      value={post.PostDate}
+                      year="numeric"
+                      month="long"
+                      day="numeric"
+                      weekday="long"
+                    />
+                  }
+                </span>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Featured Image */}
-        <div className="relative w-full h-auto mb-8 rounded-xl overflow-hidden">
-          {post.PostBody?.map((content, index) => (
-            <div key={index} className="mb-6">
-              {content.contentType === "text" ? (
-                <p className="text-base text-gray-700">{content.contentBody}</p>
-              ) : content.contentType === "image" ? (
-                <div className="relative w-full h-64 sm:h-96">
-                  <Image
-                    src={content.contentBody}
-                    alt={`Content image ${index}`}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-xl"
-                  />
-                </div>
-              ) : (
-                <p className="text-red-500">Unknown content type</p>
-              )}
-            </div>
-          ))}
-        </div>
+          {/* Featured Image */}
+          <div className="relative w-full h-auto mb-8 rounded-xl overflow-hidden">
+            {post.PostBody?.map((content, index) => (
+              <div key={index} className="mb-6">
+                {content.contentType === "text" ? (
+                  <p className="text-base text-gray-700">
+                    {content.contentBody}
+                  </p>
+                ) : content.contentType === "image" ? (
+                  <div className="relative w-full h-64 sm:h-96">
+                    <Image
+                      src={content.contentBody}
+                      alt={`Content image ${index}`}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-xl"
+                    />
+                  </div>
+                ) : (
+                  <p className="text-red-500">Unknown content type</p>
+                )}
+              </div>
+            ))}
+          </div>
 
-        <Comment postId={post._id} />
-      </motion.article>
-      <Footer />
+          <Comment postId={post._id} />
+        </motion.article>
+      </LayoutComponent>
     </>
   );
 }

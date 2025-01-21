@@ -8,10 +8,7 @@ export default function Footer() {
       <Image
         src={FooterImg}
         alt="Genera Technology"
-        priority
-        width={192}
-        height={192}
-        className="w-48 h-auto "
+        className="w-48 h-auto"
       />
       <div className="flex flex-col ml-48">
         <Direction />

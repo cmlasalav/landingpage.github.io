@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 
 export default function PostVisibility({ isVisible }) {
   const [visibility, setVisibility] = useState("post.visibility.error");
+
   //Post visibility
   useEffect(() => {
     if (isVisible) {
@@ -18,7 +19,10 @@ export default function PostVisibility({ isVisible }) {
         id="post.visibility"
         defaultMessage="Error getting the visibility"
       />
-      <FormattedMessage id={visibility} defaultMessage="" />
+      <FormattedMessage
+        id={visibility}
+        defaultMessage="Error getting the visibility"
+      />
     </strong>
   );
 }

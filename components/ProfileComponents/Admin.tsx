@@ -4,10 +4,14 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FormattedMessage, FormattedDate } from "react-intl";
 import { useToast } from "context/toastContext";
-import NoData from "../Parts/NoData";
+import { firstParagraph, findImageUrl } from "../utils/content";
 import AuthorName from "@components/Parts/Author";
+import DeleteButton from "@components/Parts/DeleteButton";
+import NoData from "../Parts/NoData";
+import PostVisibility from "@components/Parts/PostVisibility";
 
 const BlogURL = process.env.NEXT_PUBLIC_API_URL;
+const TypeUser = process.env.NEXT_PUBLIC_USER_TYPE2;
 const itemsPage = 4;
 
 export default function Admin() {
@@ -53,27 +57,29 @@ export default function Admin() {
   }, []);
 
   //#region PostComponents
-  const firstParagraph = (postBody) => {
-    for (const content of postBody) {
-      if (typeof content === "string") {
-        return <span>{content}</span>;
-      }
-      if (typeof content === "object" && content.contentType === "text") {
-        return <span>{content.contentBody}</span>;
-      }
-    }
-    return null;
-  };
 
-  const findImageUrl = (postBody) => {
-    for (const content of postBody) {
-      if (typeof content === "object" && content.contentType === "image") {
-        return content.contentBody;
-      }
+  //Delete
+  const handleDelete = (typeData, id) => {
+    switch (typeData) {
+      case "post":
+        setPosts(posts.filter((post) => post._id !== id));
+        setMorePosts(morePosts.filter((post) => post._id !== id));
+        break;
+      case "testimonials":
+        setTestimonials(
+          testimonials.filter((testimonial) => testimonial._id !== id)
+        );
+        setMoreTestimonials(
+          moreTestimonials.filter((testimonial) => testimonial._id !== id)
+        );
+        break;
+      case "comments":
+        setComments(comments.filter((comment) => comment._id !== id));
+        setMoreComments(moreComments.filter((comment) => comment._id !== id));
+        break;
     }
-    return "/placeholder.png";
   };
-
+  ``;
   const loadMore = (section) => {
     const nextPage = currentPage[section] + 1;
     const startIndex = (nextPage - 1) * itemsPage;
@@ -111,44 +117,47 @@ export default function Admin() {
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {morePosts.map((post) => (
-                <Link
-                  key={post._id}
-                  href={`/blog/${post._id}`}
-                  className="block"
-                >
-                  <div
-                    key={post._id}
-                    className="bg-white shadow rounded-lg overflow-hidden flex flex-col"
-                  >
-                    <div className="relative h-64">
-                      <Image
-                        src={findImageUrl(post.PostBody)}
-                        alt={post.PostTitle}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                    <div className="p-6 flex-grow">
-                      <h3 className="font-semibold text-xl mb-3">
-                        {post.PostTitle}
-                      </h3>
-                      <p className="text-gray-600 mb-4">
-                        {firstParagraph(post.PostBody)}
-                      </p>
-                      <div className="flex justify-between items-center text-sm text-gray-500 mt-auto">
-                        <span>
-                          <AuthorName authorToken={post.Author} />
-                        </span>
-                        <FormattedDate
-                          value={new Date(post.PostDate)}
-                          year="numeric"
-                          month="long"
-                          day="numeric"
+                <div key={post._id} className="relative ">
+                  <Link href={`/blog/${post._id}`} className="block">
+                    <div className="bg-white shadow rounded-lg overflow-hidden flex flex-col">
+                      <div className="relative h-64">
+                        <Image
+                          src={findImageUrl(post.PostBody)}
+                          alt={post.PostTitle}
+                          style={{ objectFit: "cover" }}
+                          fill
+                          priority
                         />
                       </div>
+                      <div className="p-6 flex-grow">
+                        <h3 className="font-semibold text-xl mb-3">
+                          {post.PostTitle}
+                        </h3>
+                        <p className="text-gray-600 mb-4">
+                          {firstParagraph(post.PostBody)}
+                        </p>
+                        <div className="flex justify-between items-center text-sm text-gray-500 mt-auto">
+                          <span>
+                            <AuthorName authorToken={post.Author} />
+                          </span>
+                          <FormattedDate
+                            value={new Date(post.PostDate)}
+                            year="numeric"
+                            month="long"
+                            day="numeric"
+                          />
+                        </div>
+                        <PostVisibility isVisible={post.PostStatus} />
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                  <DeleteButton
+                    typeData="post"
+                    typeUser={TypeUser}
+                    _id={post._id}
+                    onDelete={() => handleDelete("post", post._id)}
+                  />
+                </div>
               ))}
             </div>
             {posts.length > morePosts.length && (
@@ -183,21 +192,41 @@ export default function Admin() {
               {moreTestimonials.map((testimonial) => (
                 <div
                   key={testimonial._id}
-                  className="bg-white shadow rounded-lg p-4"
+                  className="bg-white shadow rounded-lg p-4 relative"
                 >
-                  <p className="italic">"{testimonial.TestimonialBody}"</p>
-                  <p className="text-sm text-gray-600 mt-2">
-                    - {testimonial.Author} {/*Author component */}
-                  </p>
-                  <p className="text-sm text-gray-600 mt-2">
-                    <FormattedDate
-                      value={testimonial.TestimonialDate}
-                      year="numeric"
-                      month="long"
-                      day="numeric"
-                      weekday="long"
-                    />
-                  </p>
+                  <div>
+                    <p className="italic text-lg mb-4">
+                      "{testimonial.TestimonialBody}"
+                    </p>
+                    <div className="space-y-2">
+                      <p className="text-sm text-gray-600">
+                        - {testimonial.Author} {/*Author Component*/}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        <FormattedDate
+                          value={testimonial.TestimonialDate}
+                          year="numeric"
+                          month="long"
+                          day="numeric"
+                          weekday="long"
+                        />
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    <div className="relative h-8">
+                      <div className="absolute inset-0 flex justify-end">
+                        <DeleteButton
+                          typeData="testimonials"
+                          typeUser={TypeUser}
+                          _id={testimonial._id}
+                          onDelete={() =>
+                            handleDelete("testimonials", testimonial._id)
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -231,21 +260,43 @@ export default function Admin() {
           <>
             <div className="space-y-4">
               {moreComments.map((comment) => (
-                <Link
+                <div
                   key={comment._id}
-                  href={`/blog/${comment.PostId}#comment-${comment._id}`}
-                  className="block"
+                  className="bg-white shadow rounded-lg p-4 relative"
                 >
-                  <div
-                    key={comment._id}
-                    className="bg-white shadow rounded-lg p-4"
+                  <Link
+                    href={`/blog/${comment.PostId}#comment-${comment._id}`}
+                    className="block"
                   >
-                    <p>{comment.CommentBody}</p>
-                    <p className="text-sm text-gray-600 mt-2">
-                      <AuthorName authorToken={comment.Author} />
-                    </p>
+                    <div className="space-y-2 text-lg">
+                      <p>{comment.CommentBody}</p>
+                      <p className="text-sm text-gray-600 mt-2">
+                        - <AuthorName authorToken={comment.Author} />
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        <FormattedDate
+                          value={comment.CommentDate}
+                          year="numeric"
+                          month="long"
+                          day="numeric"
+                          weekday="long"
+                        />
+                      </p>
+                    </div>
+                  </Link>
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    <div className="relative h-8">
+                      <div className="absolute inset-0 flex justify-end">
+                        <DeleteButton
+                          typeData="comments"
+                          typeUser={TypeUser}
+                          _id={comment._id}
+                          onDelete={() => handleDelete("comments", comment._id)}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
             {comments.length > moreComments.length && (

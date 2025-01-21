@@ -8,6 +8,7 @@
   "header.login": "Iniciar Sesión",
   "header.signOut": "Cerrar Sesión",
   "header.profile": "Perfil",
+  "header.back": "Regresar",
 
   "message.button": "Enviar Mensaje",
 
@@ -79,12 +80,14 @@
   "modal.validate.image": "La imagen es válida",
   "modal.invalidate.image": "La imagen es inválida",
   "modal.error.add.image": "Por favor, añade una imagen antes de enviar el servicio.",
-  "modal.deleted.comment": "El comentario se ha eliminado con éxito",
-  "modal.error.deleted.comment": "El comentario no se ha podido eliminar",
-  "modal.deleted.post": "La publicación ha sido eliminada con éxito",
-  "modal.error.deleted.post": "La publicación no se ha podido eliminar",
-  "modal.deleted.testimonial": "El testimonio ha sido eliminado con éxito",
-  "modal.error.deleted.testimonial": "El testimonio no se ha podido eliminar",
+
+  "comments.deleted.success": "El comentario se ha eliminado con éxito",
+  "comments.error.deleted": "El comentario no se ha podido eliminar",
+  "post.deleted.success": "La publicación ha sido eliminada con éxito",
+  "post.error.deleted": "La publicación no se ha podido eliminar",
+  "testimonials.deleted.success": "El testimonio ha sido eliminado con éxito",
+  "testimonials.error.deleted": "El testimonio no se ha podido eliminar",
+
   "modal.edit.comment": "El comentario se ha actualizado con éxito",
   "modal.error.edit.comment": "El comentario no se ha podido actualizar",
   "modal.error.comment.get": "El comentario no se ha podido encontrar",
@@ -183,11 +186,11 @@
   "profile.name": "Nombre: ",
   "profile.email": "Correo: ",
   "profile.role": "Rol: ",
-  "profile.post.title": "Publicaciones hechas por",
+  "profile.post.title": "Publicaciones hechas por {userName}",
   "profile.post.admin.title": "Publicaciones hechas por otros autores",
   "profile.testimonials.admin.title": "Todos los testimonios",
   "profile.comment.admin.title": "Comentarios hechos por otros usuarios",
-  "profile.comment.title": "Comentarios hechos por",
+  "profile.comment.title": "Comentarios hechos por {userName}",
   "profile.edit.button": "Editar perfil",
   "profile.edit.save.button": "Guardar cambios",
 
@@ -198,12 +201,15 @@
   "post-private-page.counter": "Redirigiéndote en {counter} segundos...",
 
   "post.delete.button": "Eliminar publicación",
-  "comment.delete.button": "Eliminar comentario",
-  "testimonial-delete-button": "Eliminar testimonio",
+  "comments.delete.button": "Eliminar comentario",
+  "testimonials.delete.button": "Eliminar testimonio",
   "post.edit.button": "Editar publicación",
   "comment.edit.button": "Editar comentario",
 
+  "button.deleting": "Eliminando...",
+  "button.editing":"Editando...",
+
   "general.error": "Ocurrió un error",
 
-  "more.button" : "Cargar más"
+  "more.button": "Cargar más"
 }

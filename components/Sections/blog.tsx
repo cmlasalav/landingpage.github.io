@@ -1,29 +1,36 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { useToast } from "../../context/toastContext";
 import Post from "../BlogComponents/Post";
 import NoData from "../Parts/NoData";
 
-const BlogURL = `${process.env.NEXT_PUBLIC_API_URL}/blog`;
+const BlogURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Blog() {
+  //Toast Message
+  const { showToast } = useToast();
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axios.get(BlogURL);
+        const response = await axios.get(`${BlogURL}/blog`);
         if (response.status === 201) {
-          const datePosts = response.data.sort(
+          const postVisibility = response.data.filter(
+            (post) => post.PostStatus === true
+          );
+          const datePosts = postVisibility.sort(
             (a: { PostDate: string }, b: { PostDate: string }) =>
               new Date(b.PostDate).getTime() - new Date(a.PostDate).getTime()
           );
           setPosts(datePosts);
         } else {
-          console.log("Error");
+          showToast({ message: "error.post.user", typeMessage: "error" });
         }
       } catch (error) {
-        console.log("Error", error);
+        showToast({ message: "general.error", typeMessage: "error" });
       }
     };
     getPosts();

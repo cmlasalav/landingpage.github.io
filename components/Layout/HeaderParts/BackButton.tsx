@@ -1,14 +1,25 @@
+import { useRouter } from "next/router";
 import { FormattedMessage } from "react-intl";
+import { ArrowLeft } from "lucide-react";
 
-export default function BackButton({ onBack }) {
+export default function BackButton() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    if (router.pathname === "/profile") {
+      router.push("/");
+    } else {
+      router.back();
+    }
+  };
+
   return (
-    <li>
-      <button
-        onClick={onBack}
-        className="bg-white border border-[#0d98e2] text-[#0d98e2] cursor-pointer py-2 px-4 rounded-2xl mr-8 hover:scale-105 transition-transform"
-      >
-        ← <FormattedMessage id="header.home" defaultMessage="Home" />
-      </button>
-    </li>
+    <button
+      onClick={handleBack}
+      className="flex items-center gap-2 bg-transparent border-none cursor-pointer text-inherit hover:text-gray-600 transition-colors"
+    >
+      <ArrowLeft className="h-5 w-5" />
+      <FormattedMessage id="header.back" defaultMessage="Go Back" />
+    </button>
   );
 }

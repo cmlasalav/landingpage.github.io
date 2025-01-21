@@ -5,6 +5,7 @@ import { useToast } from "../../context/toastContext";
 import Admin from "./Admin";
 import Loader from "../Parts/Loader";
 import User from "./User";
+import LayoutComponent from "@components/Layout/LayoutComponent";
 
 const ProfileURL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -72,17 +73,19 @@ export default function Profile() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-white shadow rounded-lg p-6 mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">
-          <FormattedMessage id="profile.title" defaultMessage="Profile" />
-        </h1>
-        <div className="space-y-4">
-          <p className="flex items-center text-gray-700">
-            <span className="font-medium mr-2">
-              <FormattedMessage id="profile.name" defaultMessage="Name:" />
-            </span>
-            {/* {editing ? (
+    <>
+      <LayoutComponent>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="bg-white shadow rounded-lg p-6 mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">
+              <FormattedMessage id="profile.title" defaultMessage="Profile" />
+            </h1>
+            <div className="space-y-4">
+              <p className="flex items-center text-gray-700">
+                <span className="font-medium mr-2">
+                  <FormattedMessage id="profile.name" defaultMessage="Name:" />
+                </span>
+                {/* {editing ? (
               <input
                 type="text"
                 value={profile.fullName}
@@ -93,25 +96,31 @@ export default function Profile() {
                 readOnly
               />
             ) : ( */}
-              {profile.fullName}
-            {/* )} */}
-           </p> 
-          <p className="text-gray-700">
-            <span className="font-medium mr-2">
-              <FormattedMessage id="profile.email" defaultMessage="Email:" />
-            </span>
-            {profile.email}
-          </p>
-          {profile.role !== "user" && (
-            <p className="text-gray-700">
-              <span className="font-medium mr-2">
-                <FormattedMessage id="profile.role" defaultMessage="Role: " />
-              </span>
-              {profile.role}
-            </p>
-          )}
-        </div>
-        {/* <button
+                {profile.fullName}
+                {/* )} */}
+              </p>
+              <p className="text-gray-700">
+                <span className="font-medium mr-2">
+                  <FormattedMessage
+                    id="profile.email"
+                    defaultMessage="Email:"
+                  />
+                </span>
+                {profile.email}
+              </p>
+              {profile.role !== "user" && (
+                <p className="text-gray-700">
+                  <span className="font-medium mr-2">
+                    <FormattedMessage
+                      id="profile.role"
+                      defaultMessage="Role: "
+                    />
+                  </span>
+                  {profile.role}
+                </p>
+              )}
+            </div>
+            {/* <button
           className="mt-6 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300 ease-in-out"
           onClick={handleEdit}
         >
@@ -120,9 +129,11 @@ export default function Profile() {
             defaultMessage={editing ? "Save changes" : "Edit profile"}
           />
         </button> */}
-      </div>
-      {profile.role !== "user" && <Admin />}
-      <User />
-    </div>
+          </div>
+          {profile.role !== "user" && <Admin />}
+          <User />
+        </div>
+      </LayoutComponent>
+    </>
   );
 }

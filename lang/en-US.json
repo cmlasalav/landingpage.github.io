@@ -8,6 +8,7 @@
     "header.login" : "Login",
     "header.signOut" : "Sign Out",
     "header.profile" : "Profile",
+    "header.back" : "Go Back",
 
     "message.button" : "Send a message",
 
@@ -76,12 +77,14 @@
     "modal.validate.image" : "Valid image.",
     "modal.invalidate.image" : "Invalid image.",
     "modal.error.add.image" : "Please add an image before submitting the service.",
-    "modal.deleted.comment" : "The comment has been successfully deleted.",
-    "modal.error.deleted.comment" : "The comment could not be deleted.",
-    "modal.deleted.post" : "The post has been successfully deleted.",
-    "modal.error.deleted.post" : "The post could not be deleted.",
-    "modal.deleted.testimonial" : "The testimonial has been successfully deleted.",
-    "modal.error.deleted.testimonial" : "The testimonial could not be deleted",
+
+    "comments.deleted.success" : "The comment has been successfully deleted.",
+    "comments.error.deleted" : "The comment could not be deleted.",
+    "post.deleted.success" : "The post has been successfully deleted.",
+    "post.error.deleted" : "The post could not be deleted.",
+    "testimonials.deleted.success" : "The testimonial has been successfully deleted.",
+    "testimonials.error.deleted" : "The testimonial could not be deleted",
+
     "modal.edit.comment" : "The comment has been successfully updated.",
     "modal.error.edit.comment" : "The comment could not be updated.",
     "modal.error.comment.get" : "The comment could not be found.",
@@ -198,10 +201,13 @@
     "post-private-page.counter" : "Redirecting you in {counter} seconds...",
 
     "post.delete.button" : "Delete post",
-    "comment.delete.button" : "Delete comment",
-    "testimonial-delete-button" : "Delete testimonial",
+    "comments.delete.button" : "Delete comment",
+    "testimonials.delete.button" : "Delete testimonial",
     "post.edit.button" : "Edit post",
     "comment.edit.button" : "Edit comment",
+
+    "button.deleting":"Deleting...",
+    "button.editing":"Editing...",
 
     "general.error": "An error occurred.",
 

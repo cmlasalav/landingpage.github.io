@@ -41,10 +41,9 @@ export default function GeneraHome() {
               <Image
                 src={Logo}
                 alt="Example Group"
-                className="max-w-[30rem] z-30 mx-auto"
                 priority
+                className="w-auto h-auto max-w-[30rem] z-30 mx-auto"
               />
-
               <p
                 className="mb-16 text-5xl font-medium text-gray-800"
                 id="genera-home-title"
