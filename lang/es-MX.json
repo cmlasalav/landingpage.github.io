@@ -66,20 +66,26 @@
   "post.visibility.private": "privada",
   "post.visibility.error": "No se pudo obtener la visibilidad",
 
+  "modal.title.confirmation": "Confirmación",
+
   "modal.error.postContent": "No puedes modificar el contenido de este post en este momento.",
   "modal.error.role": "El rol no pudo ser encontrado",
   "modal.error.tags": "Etiquetas no disponibles",
-  "modal.confirm.testimonial": "El testimonio ha sido publicado",
-  "modal.error.testimonial": "El testimonio no se ha podido publicar",
+  "modal.confirm.testimonials": "El testimonio ha sido publicado",
+  "modal.error.testimonials": "El testimonio no se ha podido publicar",
   "modal.confirm.newPost": "El post ha sido publicado",
-  "modal.AboutUs.error": "La información sobre la empresa no pudo ser cargada",
   "modal.error.newPost": "El post no se ha podido publicar",
   "modal.confirm.services": "El servicio ha sido publicado",
-  "modal.error.service": "El servicio no se ha podido publicar",
+  "modal.error.services": "El servicio no se ha podido publicar",
   "modal.error.image": "La imagen no ha podido ser publicada",
   "modal.validate.image": "La imagen es válida",
   "modal.invalidate.image": "La imagen es inválida",
   "modal.error.add.image": "Por favor, añade una imagen antes de enviar el servicio.",
+
+  "get.AboutUs.error": "La información sobre la empresa no pudo ser cargada",
+  "get.Services.error": "Los servicios de la empresa no pudieron ser cargados",
+  "get.Testimonials.error": "Los testimonios no pudieron ser cargados",
+  "get.Home.error": "La página de inicio no pudo ser cargada",
 
   "comments.deleted.success": "El comentario se ha eliminado con éxito",
   "comments.error.deleted": "El comentario no se ha podido eliminar",
@@ -176,10 +182,11 @@
 
   "testimonial.add.new": "Crear nuevo testimonio",
 
+  "testimonials.form.title": "Agregar nuevo testimonio",
+  "services.form.title": "Agregar nuevo servicio",
   "form.author": "Autor: ",
   "form.cancel": "Cancelar",
 
-  "testimonial.form.button": "Enviar Testimonio",
   "testimonial.body": "Testimonio:",
 
   "profile.title": "Perfil",
@@ -207,7 +214,7 @@
   "comment.edit.button": "Editar comentario",
 
   "button.deleting": "Eliminando...",
-  "button.editing":"Editando...",
+  "button.editing": "Editando...",
 
   "general.error": "Ocurrió un error",
 

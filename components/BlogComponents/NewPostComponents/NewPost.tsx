@@ -27,7 +27,7 @@ export default function NewPost({ postSelected }) {
   //Post Content State
   const [bodyContent, setBodyContent] = useState("");
   //Loader State
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const [post, setPost] = useState({
     PostTitle: "",
@@ -46,6 +46,7 @@ export default function NewPost({ postSelected }) {
     }
   }, [postSelected]);
 
+  //#region Post Components
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
@@ -123,6 +124,8 @@ export default function NewPost({ postSelected }) {
     setBodyContent("");
   };
 
+  //#endregion
+
   const postTitle = postSelected ? "section.newpost.edit" : "section.newpost";
   const buttonClass = postSelected
     ? "bg-yellow-500 text-white"
@@ -132,7 +135,7 @@ export default function NewPost({ postSelected }) {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {loader ? (
-        <Loader duration={3000} />
+        <Loader duration={1000} onComplete={() => setLoader(false)} />
       ) : (
         <>
           <LayoutComponent>

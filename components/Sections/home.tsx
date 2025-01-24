@@ -8,12 +8,19 @@ import { Link as ScrollLink } from "react-scroll";
 import { langContext } from "../../context/langContext";
 import Logo from "../../public/images/Logo-White.jpg";
 import NoData from "../Parts/NoData";
+import { useToast } from "context/toastContext";
 
 const HomeURL = `${process.env.NEXT_PUBLIC_API_URL}/home`;
 
 export default function GeneraHome() {
+  //Home State
   const [home, setHome] = useState([]);
+
+  //Language Context
   const { locale } = useContext(langContext);
+
+  //Toast Message
+  const { showToast } = useToast();
 
   useEffect(() => {
     const getHome = async () => {
@@ -24,7 +31,7 @@ export default function GeneraHome() {
           setHome(homeData);
         }
       } catch (error) {
-        console.log(error);
+        showToast({ message: "get.Home.error", typeMessage: "error" });
       }
     };
     getHome();

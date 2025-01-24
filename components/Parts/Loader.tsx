@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function Loader({ duration }) {
-  const [isActive, setIsActive] = useState(true);
+interface LoaderProps {
+  duration: number;
+  onComplete?: () => void;
+}
 
+export default function Loader({ duration, onComplete }: LoaderProps) {
   useEffect(() => {
-    const timer = setTimeout(() => setIsActive(false), duration);
+    const timer = setTimeout(() => {
+      if (onComplete) onComplete();
+    }, duration);
     return () => clearTimeout(timer);
-  }, [duration]);
-
-  if (!isActive) return null;
+  }, [duration, onComplete]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">

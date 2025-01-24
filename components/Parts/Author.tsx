@@ -18,11 +18,11 @@ export default function AuthorName({ authorToken }) {
           setUserName(name);
         } else {
           showToast({ message: "error.info.user", typeMessage: "error" });
-          setUserName("user");
+          setUserName("Anonymous");
         }
       } catch (error) {
         showToast({ message: "error.info.user", typeMessage: "error" });
-        setUserName("user");
+        setUserName("Anonymous");
       }
     };
 

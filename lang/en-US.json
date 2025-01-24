@@ -64,19 +64,27 @@
     "post.visibility.private" : "private",
     "post.visibility.error" : "Error getting the visibility.",
 
+    "modal.title.confirmation" : "Confirmation",
+
     "modal.error.postContent" : "You cannot modify the content of this post at this time.",
     "modal.error.role" : "The role could not be found.",
-    "modal.confirm.testimonial": "The testimonial has been submitted.",
-    "modal.error.testimonial" : "The testimonial submission failed.",
+    "modal.confirm.testimonials": "The testimonial has been submitted.",
+    "modal.error.testimonials" : "The testimonial submission failed.",
     "modal.confirm.newPost" : "The post has been submitted.",
     "modal.error.newPost" : "The post submission failed.",
-    "modal.AboutUs.error" : "The information about the company could not be loaded.",
     "modal.confirm.services" : "The service has been submitted.",
-    "modal.error.service" : "The service submission failed.",
+    "modal.error.services" : "The service submission failed.",
     "modal.error.image" : "The image submission failed.",
     "modal.validate.image" : "Valid image.",
     "modal.invalidate.image" : "Invalid image.",
     "modal.error.add.image" : "Please add an image before submitting the service.",
+
+
+
+    "get.AboutUs.error" : "The information about the company could not be loaded.",
+    "get.Services.error" : "The services could not be loaded.",
+    "get.Testimonials.error" : "The testimonials could not be loaded.",
+    "get.Home.error" : "The home page could not be loaded.",
 
     "comments.deleted.success" : "The comment has been successfully deleted.",
     "comments.error.deleted" : "The comment could not be deleted.",
@@ -157,7 +165,6 @@
     "service.description.english" : "Service description - english: ",
     "service.name.spanish" : "Service name - spanish: ",
     "service.description.spanish" : "Service description - spanish: ",
-    "service.form.button" : "Send service",
     "service.img" : "Service Image: ",
 
     "modal.email" : "Email Address:",
@@ -176,10 +183,11 @@
 
     "testimonial.add.new" : "Create New Testimonial",
 
+    "testimonials.form.title" : "Add New Testimonial",
+    "services.form.title" : "Add New Service",
     "form.author" : "Author: ",
     "form.cancel" : "Cancel",
 
-    "testimonial.form.button" : "Send Testimonial",
     "testimonial.body" : "Testimonial:",
 
     "profile.title" : "Profile",

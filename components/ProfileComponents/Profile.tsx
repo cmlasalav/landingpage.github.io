@@ -2,6 +2,7 @@ import axios from "axios";
 import { FormattedMessage } from "react-intl";
 import { useState, useEffect } from "react";
 import { useToast } from "../../context/toastContext";
+import AddForm from "../Parts/AddForm";
 import Admin from "./Admin";
 import Loader from "../Parts/Loader";
 import User from "./User";
@@ -22,6 +23,11 @@ export default function Profile() {
   const [editing, setEditing] = useState(false);
   //Loader State
   const [loader, setLoader] = useState(true);
+
+  //Form
+  const [showForm, setShowForm] = useState<"services" | "testimonials" | null>(
+    null
+  );
 
   const handleEdit = async () => {
     if (editing) {
@@ -77,9 +83,34 @@ export default function Profile() {
       <LayoutComponent>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="bg-white shadow rounded-lg p-6 mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">
-              <FormattedMessage id="profile.title" defaultMessage="Profile" />
-            </h1>
+            <div className="flex justify-between items-center mb-6">
+              <h1 className="text-3xl font-bold text-gray-900 mb-6">
+                <FormattedMessage id="profile.title" defaultMessage="Profile" />
+              </h1>
+              <div className="space-x-4">
+                {profile.role === "admin" && (
+                  <button
+                    onClick={() => setShowForm("services")}
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300 ease-in-out"
+                  >
+                    <FormattedMessage
+                      id="service.add.new"
+                      defaultMessage="Add Service"
+                    />
+                  </button>
+                )}
+                <button
+                  onClick={() => setShowForm("testimonials")}
+                  className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300 ease-in-out"
+                >
+                  <FormattedMessage
+                    id="testimonial.add.new"
+                    defaultMessage="Add Testimonial"
+                  />
+                </button>
+              </div>
+            </div>
+
             <div className="space-y-4">
               <p className="flex items-center text-gray-700">
                 <span className="font-medium mr-2">
@@ -134,6 +165,9 @@ export default function Profile() {
           <User />
         </div>
       </LayoutComponent>
+      {showForm && (
+        <AddForm type={showForm} onClose={() => setShowForm(null)} />
+      )}
     </>
   );
 }

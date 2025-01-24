@@ -5,7 +5,7 @@ import Contact from "@components/Sections/ContactComponents/contact";
 import Home from "@components/Sections/home";
 import LayoutComponent from "@components/Layout/LayoutComponent";
 import Loader from "@components/Parts/Loader";
-import Services from "../components/Sections/servicesSection";
+import Services from "../components/Sections/ServicesComponents/servicesSection";
 import Testimonials from "@components/Sections/testimonials";
 
 export default function HomePage() {

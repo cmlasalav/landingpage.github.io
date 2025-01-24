@@ -1,3 +1,5 @@
+import Logo from '../../public/images/Services.jpg'
+
 export const firstParagraph = (postBody) => {
   for (const content of postBody) {
     if (typeof content === "string") {
@@ -16,5 +18,5 @@ export const findImageUrl = (postBody) => {
       return content.contentBody;
     }
   }
-  return "/placeholder.png";
+  return Logo;
 };

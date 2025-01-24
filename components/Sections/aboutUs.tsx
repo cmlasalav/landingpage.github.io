@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { langContext } from "../../context/langContext";
+import { useToast } from "../../context/toastContext";
 import Journey from "../../public/images/Journey.jpg";
 import Team from "../../public/images/Team.jpg";
 import Achievements from "../../public/images/Achievements.jpg";
@@ -11,15 +12,18 @@ import NoData from "../Parts/NoData";
 
 const AboutUsURL = `${process.env.NEXT_PUBLIC_API_URL}/aboutUs`;
 
-export default function AboutUs(
-  {
-    //setModalMessage,
-    //setErrorModal
-  }
-) {
+export default function AboutUs() {
+  //AboutUs State
   const [aboutUs, setAboutUs] = useState([]);
+
+  //Images
   const images = [Journey, Team, Achievements];
+
+  //Language Context
   const { locale } = useContext(langContext);
+
+  //Toast Message
+  const { showToast } = useToast();
 
   useEffect(() => {
     const getAboutUs = async () => {
@@ -30,7 +34,7 @@ export default function AboutUs(
           setAboutUs(AboutUs);
         }
       } catch (error) {
-        console.log("Error", error);
+       showToast({message: "get.AboutUs.error", typeMessage: "error"});
       }
     };
     getAboutUs();

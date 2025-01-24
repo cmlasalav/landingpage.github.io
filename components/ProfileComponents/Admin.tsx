@@ -200,7 +200,7 @@ export default function Admin() {
                     </p>
                     <div className="space-y-2">
                       <p className="text-sm text-gray-600">
-                        - {testimonial.Author} {/*Author Component*/}
+                        - <AuthorName authorToken={testimonial.Author} />
                       </p>
                       <p className="text-sm text-gray-600">
                         <FormattedDate

@@ -11,6 +11,7 @@ import DeleteButton from "@components/Parts/DeleteButton";
 import NoData from "../Parts/NoData";
 import EditButton from "@components/Parts/EditButton";
 import PostVisibility from "@components/Parts/PostVisibility";
+import NewPostButton from "@components/Parts/NewPostButton";
 
 const UserURL = process.env.NEXT_PUBLIC_API_URL;
 const TypeUser = process.env.NEXT_PUBLIC_USER_TYPE1;
@@ -22,7 +23,6 @@ export default function UserView() {
   //User State
   const [userPosts, setUserPosts] = useState([]);
   const [userComments, setUserComments] = useState([]);
-
 
   //Toast Message
   const { showToast } = useToast();
@@ -96,13 +96,16 @@ export default function UserView() {
   return (
     <div className="mt-8 space-y-8">
       <section>
-        <h2 className="text-2xl font-bold mb-6">
-          <FormattedMessage
-            id="profile.post.title"
-            defaultMessage="Posts by {userName}"
-            values={{ userName }}
-          />
-        </h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold mb-6">
+            <FormattedMessage
+              id="profile.post.title"
+              defaultMessage="Posts by {userName}"
+              values={{ userName }}
+            />
+          </h2>
+          <NewPostButton />
+        </div>
         {moreUserPosts.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

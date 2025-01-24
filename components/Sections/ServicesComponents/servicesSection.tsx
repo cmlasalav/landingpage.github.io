@@ -2,21 +2,25 @@ import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { FormattedMessage } from "react-intl";
-import { langContext } from "../../context/langContext";
-import ServiceLogo from "../../public/images/Services.jpg";
-//import AddNew from "../../Parts/AddNew";
-import NoData from "../Parts/NoData";
-//import NewServices from "./NewServices";
+import { langContext } from "../../../context/langContext";
+import ServiceLogo from "../../../public/images/Services.jpg";
+import NoData from "../../Parts/NoData";
+import { useToast } from "context/toastContext";
 
 const ServicesURL = `${process.env.NEXT_PUBLIC_API_URL}/services`;
 
 export default function Services() {
+  //Services State
   const [services, setServices] = useState([]);
-  const [newService, setNewService] = useState(false);
+
+  //Language Context
   const { locale } = useContext(langContext);
 
+  //Toast Message
+  const { showToast } = useToast();
+
   useEffect(() => {
-    const fetchServices = async () => {
+    const getServices = async () => {
       try {
         const response = await axios.get(ServicesURL);
         if (response.status === 201) {
@@ -24,20 +28,12 @@ export default function Services() {
           setServices(services);
         }
       } catch (error) {
-        console.log("Error", error);
+        showToast({message: "get.Services.error", typeMessage: "error"});
       }
     };
 
-    fetchServices();
+    getServices();
   }, []);
-
-  const handleNewService = (e) => {
-    setNewService(true);
-  };
-
-  const handleNewServicesCancel = (e) => {
-    setNewService(false);
-  };
 
   return (
     <section id="Services" className="py-8 px-4">
@@ -54,25 +50,6 @@ export default function Services() {
       </h1>
       <NoData data={services} messageLoading="loading.services" />
       <div className="flex flex-wrap justify-center gap-8">
-        {/*
-        {!newService && (
-          <AddNew
-            onNewService={handleNewService}
-            viewType="service"
-            lang="service.add.new"
-            setModalMessage={setModalMessage}
-            setErrorModal={setErrorModal}
-          />
-        )}
-        {newService && (
-          <NewServices
-            onCancel={handleNewServicesCancel}
-            setModalMessage={setModalMessage}
-            setErrorModal={setErrorModal}
-            setConfirm={setConfirm}
-          />
-        )}
-        */}
         {services.map((service, index) => (
           <div
             key={index}
